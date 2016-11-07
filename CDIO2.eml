@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component inherit-compiler-output="true" inheritJdk="true">
+	<output-test url="file://$MODULE_DIR$/out/test/CDIO2"/>
+	<exclude-output/>
+	<contentEntry url="file://$MODULE_DIR$">
+		<testFolder url="file://$MODULE_DIR$/test"/>
+		<excludeFolder url="file://$MODULE_DIR$/docs"/>
+	</contentEntry>
+	<lib name="JUnit4" scope="TEST"/>
+	<levels>
+		<level name="org.apache.ant:ant-junit4:1.8.3" value="project"/>
+	</levels>
+</component>
