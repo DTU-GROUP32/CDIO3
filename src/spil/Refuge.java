@@ -24,7 +24,7 @@ public class Refuge extends Field {
 	}
 	private void bonus(){
 		player.getBank().changeBalance(bonus);
-		GUI.setBalance(player.getName(),player.getBankAccount().getBalance());
+		GUI.setBalance(player.getName(),player.getBank().getBalance());
 	}
 	
 
