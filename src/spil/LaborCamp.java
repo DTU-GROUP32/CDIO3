@@ -10,6 +10,8 @@ public class LaborCamp extends Ownable {
 		this.baseRent = baseRent;
 	}
 	
+	
+	
 	@Override
 	public int getRent() {
 		return baseRent;
@@ -17,6 +19,12 @@ public class LaborCamp extends Ownable {
 	
 	@Override
 	public void landOnField(Player player) {
+		
+		if (owner != null) {
+			
+		} else if (owner == null) {
+			
+		}
 		
 	}
 
