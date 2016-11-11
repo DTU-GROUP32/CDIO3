@@ -20,11 +20,11 @@ public class Refuge extends Field {
 	
 	@Override
 	public String getFieldMessage(Player player){
-		return player.getName()+",you are on land "+fieldName+" You bonus is"+bonus;
+		return player.getName()+",you are on land "+fieldName+" Your bonus is"+bonus;
 	}
 	private void bonus(){
 		player.getBank().changeBalance(bonus);
-		GUI.setBalance(player.getName(),player.getBank().getBalance());
+		GUI.setBalance(player.getName(),player.getBankAccount().getBalance());
 	}
 	
 
