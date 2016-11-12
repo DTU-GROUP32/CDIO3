@@ -4,7 +4,7 @@ import spil.DiceCup;
 import spil.Player;
 
 public class Dansk implements Language{
-	
+
 	public Dansk(){}
 
 	/** 
@@ -15,6 +15,14 @@ public class Dansk implements Language{
 	public String welcomeMsg(){
 		return "Velkommen til spillet!";
 	}
+
+	/** 
+	 * Ask for the number of players that will participate 
+	 */
+
+	public String askForPlayers()
+	return "Hvor mange spillere skal være med? Der kan vælges fra 2 til 6";
+
 
 	/** 
 	 * Asks for player name.
@@ -31,9 +39,9 @@ public class Dansk implements Language{
 	 */
 	@Override
 	public String readyToBegin(){
-		return "\nSpillet vil nu begynde. Den spiller der først når 3000 mønter har vundet spillet\nDu kan skrive help når det bliver din tur, for en åbne en hjælpemenu "; // Skal bruger trykke på noget for at starte?
+		return "\nSpillet vil nu begynde. Spillet er vundet af den spiller der står tilbage når de andre er bankerot!\nDu kan skrive help når det bliver din tur, for en åbne en hjælpemenu "; // Skal bruger trykke på noget for at starte?
 	}
-	
+
 	/**
 	 * Premessage at the start of players turn, tells player help option. 
 	 * @return
@@ -50,43 +58,126 @@ public class Dansk implements Language{
 	public String rollResult(DiceCup diceCup){
 		return "Du slog en " + diceCup.getDices()[0].getFaceValue() + "'er og en " + diceCup.getDices()[1].getFaceValue() + "'er";
 	}
-	
+
 	/**
 	 * Switch case that displays the field message that was landed on.
 	 * @return
 	 */
 	@Override
-	public String fieldMsg(DiceCup diceCup){
+	public String fieldMsg(Field fields){
 		String fieldString;
-		switch (diceCup.getSum()) {
-		case 2:  fieldString = "Du har kravlet op i det høje tårn og finder 250 mønter!";
+		switch (Field.getID()) {
+		case 1:  fieldString = "Du bliver inviteret til fest hos stamme lejren!";
 		break;
-		case 3:  fieldString = "Du er faldet ned i krateret og det koster dig 100 mønter at komme op.";
+		case 2:  fieldString = "Du finder et stort krater og undersøger nærmere!";
 		break;
-		case 4:  fieldString = "Du står overfor en stor port til et palads. Vagterne giver dig 100 mønter i velkomst gave, da du passerer";
+		case 3:  fieldString = "Du er ankommet til et højt bjerg!";
 		break;
-		case 5:  fieldString = "Du er faret vild i den kolde ørken, men finder en bod der sælger varme handsker, det koster dig 20 mønter.";
+		case 4:  fieldString = "Du er nået til den kolde ørken!";
 		break;
-		case 6:  fieldString = "Du er ankommet til den befæstede by! Du finder en mand i nød og hjælper ham. Han giver dig 180 mønter som tak.";
+		case 5:  fieldString = "Du er kommet til en mørk krotte! ";
 		break;
-		case 7:  fieldString = "Du ser et kloster i horisonten og går nærmere for at udforske det. Du går derfra med det du kom med.";
+		case 6:  fieldString = "Du er ankommet til en stor mur!";
 		break;
-		case 8:  fieldString = "Du er er gået ind i en sort hule for at udforske den, du bliver taget til fange af de indfødte og skal betale 70 mønter for at gå derfra.";
+		case 7:  fieldString = "Du er ankommet til den famøse bjergby! ";
 		break;
-		case 9:  fieldString = "Du bestiger bjergene og finder nogle bjerghytter, de indfødte synes om dig og giver dig 60 mønter";
+		case 8:  fieldString = "Du er nået til det syde kastel!";
 		break;
-		case 10:  fieldString = "Du ankommer til en stor mur og kan ikke passere. Vareulve står vagt i porten og vil ikke lade dig gå. Du giver dem 80 mønter, men som tak får du lov til at passere og slå igen.";
+		case 9:  fieldString = "Du passerer den store slotsport";
 		break;
-		case 11: fieldString = "Du er røget ned i et hul, en mand passerer og hjælper dig, du giver ham 50 mønter som tak.";
+		case 10: fieldString = "Du kæmper dig op i det høje tårn!";
 		break;
-		case 12: fieldString = "Du ankommer til en guldmine og undersøger den. Du finder guld og sælger det for 650 mønter!";
+		case 11: fieldString = "Du er inviteret ind i det store slot!";
+		break;	
+		case 12: fieldString = "Du går forsigtigt igennem den befæstede by";
+		break;	
+		case 13: fieldString = "Du ser klosteret i distancen og undersøger det nærmere";
+		break;	
+		case 14: fieldString = "Du efterforsker bjerget nærmere og finder bjerghytter!";
+		break;	
+		case 15: fieldString = "Du faldet ned i et stort hul! ";
+		break;	
+		case 16: fieldString = "Du udforsker en krotte der ligner en guldmine";
+		break;	
+		case 17: fieldString = "Du har fundet en forladt campingvogn!";
+		break;	
+		case 18: fieldString = "Second Sail"; // WTF oversættelse?
+		break;	
+		case 19: fieldString = "Sea Grover";
+		break;	
+		case 20: fieldString = "The Buccaneers";
+		break;	
+		case 21: fieldString = "Privateer Armade";
 		break;	
 		default: fieldString = "Ukendt felt DESVÆRRE!";
 		break;
 		}
 		return fieldString;
 	}
-	
+
+
+	/**
+	 * If field is already owned it will show this message. 
+	 */
+	public String fieldAlreadyOwned(Field fields){
+		return "Du ejer allerede dette felt!";
+	}
+
+	/**
+	 * For fields that can be bought and is not owned, this message will show. 
+	 */
+	public String fieldNotOwned(Field fields){
+		return "Dette felt er ikke ejet endnu, du kan købe det for" + fields[ID].getprice() + " mønter";
+	}
+
+	/**
+	 * If territory field is owned by another player and landed on it will show this message. 
+	 */
+
+	public String territoryFieldOwned(Field fields){
+		return "Dette felt er ejet af " + fields.getowner() +  " du skal betale " + fields.getrent[ID]() + " mønter til ejeren";
+	}
+
+
+	/**
+	 * If player landed on refuge field it will show this message. 
+	 */
+
+	public String refugeField(Field fields){
+		return "Du modtager" + fields[ID].getprice + " mønter";
+	}
+
+	/**
+	 * If player landed on labor camp field that is already owned, this message will show. 
+	 */
+
+	public String laborcampFieldOwned(Field fields){
+		return "Dette felt er ejet af " + fields.getowner() + " Du skal betale " + 100*dicecup.getsum() + " mønter";
+	}
+
+	/** 
+	 * Message for the unique tax field Goldmine
+	 */
+	public String taxFieldGoldmine(Field fields){
+		return "Du skal betale 2000 i skat";
+	}
+	/** 
+	 * Message for the unique tax field Caravan
+	 */
+	public String taxFieldCaravan(Field fields){
+		return "Du kan vælge enten at betale 4000 mønter eller 10% af din pengebeholdning";
+	}
+	/** 
+	 * Message for fleet field
+	 */
+	public String fleetFieldOwned(Field fields){
+		return "Du skal betale for antallet af samme type felter ejeren ejer."; // Skal finde metode der kan se antal af fleets ejet af ejer. 
+	}
+
+	public String fleetFieldOwned(Field fields){
+		return "Du har nu købt feltet!";
+	}
+
 	/**
 	 * Prints how many points the player have after the throw.
 	 * @return
@@ -116,7 +207,7 @@ public class Dansk implements Language{
 				"Tast 4 for at afslutte spillet.\n" +
 				"Tast 5 for at fortsætte spillet.";
 	}
-	
+
 	/**
 	 * Prints the rules of the game.
 	 * @return
@@ -136,7 +227,7 @@ public class Dansk implements Language{
 				+ "11. The pit: -50 \n"
 				+ "12. Goldmine: +650";
 	}
-	
+
 	/**
 	 * Prints the score. 
 	 * @return
@@ -147,7 +238,7 @@ public class Dansk implements Language{
 		str.append("Stillingen er:");
 		for (int i = 0; i < players.length; i++) 
 			str.append("\n" + players[i].getName() + " har " + players[i].getBank().getBalance());
-			return str.toString();
+		return str.toString();
 	}
 
 	/** 
@@ -158,7 +249,7 @@ public class Dansk implements Language{
 	public String changeDices(){
 		return "Indtast hvor mange øjne de to terninger skal have, på formatet \"x,y\" - summen skal være 12"; // Summen måtte kun gå op til 12?
 	}
-	
+
 	/**
 	 * Prints that the dices were changed successfully.
 	 * @return
@@ -167,7 +258,7 @@ public class Dansk implements Language{
 	public String printDiceChangeSucces(){
 		return "Terningerne er nu ændret!";
 	}
-	
+
 	/**
 	 * Prints a error message if the dices couldn't be changed.
 	 * @return
