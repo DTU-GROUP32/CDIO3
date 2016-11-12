@@ -35,10 +35,10 @@ public class Territory extends Ownable {
 	
 	public void buyTerritory(Player player) {
 		// TODO Method needs to be reworked. This is only a temporary version
-		System.out.println("Dette felt ejes ikke af nogen. Feltet koster " + this.price);
+		// System.out.println("Dette felt ejes ikke af nogen. Feltet koster " + this.price);
 		Scanner input = new Scanner(System.in);
-		System.out.println("Tast 1 for at gå videre");
-		System.out.println("Tast 2 for at købe dette felt");
+		// System.out.println("Tast 1 for at gå videre");
+		// System.out.println("Tast 2 for at købe dette felt");
 		
 		int temp = Integer.parseInt(input.nextLine());
 		
@@ -48,7 +48,7 @@ public class Territory extends Ownable {
 		case 2:
 			player.getBank().changeBalance(this.price*(-1));
 			setOwner(player);
-			System.out.println("Feltet blev købt");
+			// System.out.println("Feltet blev købt");
 			break;
 		default:
 			break;

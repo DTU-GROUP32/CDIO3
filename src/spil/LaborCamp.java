@@ -37,7 +37,7 @@ public class LaborCamp extends Ownable {
 		DiceCup dc = new DiceCup();
 		
 		dc.rollDices();
-		System.out.println("Du slog en " + dc.getDices()[0] + "'er og en " + dc.getDices()[1] + "'er.");
+		// MSG HERE?
 		baseRent = dc.getSum()*100;
 		
 		input.close();
@@ -48,10 +48,10 @@ public class LaborCamp extends Ownable {
 	
 	public void buyTerritory(Player player) {
 		// TODO Method needs to be reworked. This is only a temporary version
-		System.out.println("Dette felt ejes ikke af nogen. Feltet koster " + this.price);
+		// System.out.println("Dette felt ejes ikke af nogen. Feltet koster " + this.price);
 		Scanner input = new Scanner(System.in);
-		System.out.println("Tast 1 for at gå videre");
-		System.out.println("Tast 2 for at købe dette felt");
+		// System.out.println("Tast 1 for at gå videre");
+		// System.out.println("Tast 2 for at købe dette felt");
 		
 		int temp = Integer.parseInt(input.nextLine());
 		
@@ -61,7 +61,7 @@ public class LaborCamp extends Ownable {
 		case 2:
 			player.getBank().changeBalance(this.price*(-1));
 			setOwner(player);
-			System.out.println("Feltet blev købt");
+			// System.out.println("Feltet blev købt");
 			break;
 		default:
 			break;
