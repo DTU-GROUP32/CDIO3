@@ -13,11 +13,6 @@ public class LaborCamp extends Ownable {
 	}
 	
 	@Override
-	public int getRent() {
-		return baseRent;
-	}
-	
-	@Override
 	public void landOnField(Player player) {	
 		if (owner != null) {
 			player.getBank().changeBalance(determineRent()*(-1));
@@ -61,6 +56,11 @@ public class LaborCamp extends Ownable {
 		}
 		
 		input.close();
+	}
+	
+	@Override
+	public int getRent() {
+		return baseRent;
 	}
 
 	@Override

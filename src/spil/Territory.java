@@ -17,11 +17,6 @@ public class Territory extends Ownable {
 	}
 	
 	@Override
-	public int getRent() {
-		return rent;
-	}
-	
-	@Override
 	public void landOnField(Player player) {
 		
 		if(owner != null) { // If territory is owned by someone
@@ -54,6 +49,11 @@ public class Territory extends Ownable {
 		}
 		
 		input.close();
+	}
+	
+	@Override
+	public int getRent() {
+		return rent;
 	}
 
 	@Override
