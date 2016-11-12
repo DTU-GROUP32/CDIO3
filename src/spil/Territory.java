@@ -34,9 +34,8 @@ public class Territory extends Ownable {
 	}
 	
 	public void buyTerritory(Player player) {
-		// TODO Method needs to be reworked. This is only a temporary version
-		// System.out.println("Dette felt ejes ikke af nogen. Feltet koster " + this.price);
 		Scanner input = new Scanner(System.in);
+		// System.out.println("Dette felt ejes ikke af nogen. Feltet koster " + this.price);
 		// System.out.println("Tast 1 for at gå videre");
 		// System.out.println("Tast 2 for at købe dette felt");
 		
@@ -65,6 +64,11 @@ public class Territory extends Ownable {
 	@Override
 	public Player getOwner() {
 		return this.owner;
+	}
+
+	@Override
+	public String getFieldMessage(Player player) {
+		return null;
 	}
 
 }
