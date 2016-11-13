@@ -4,15 +4,16 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.Assert.*;
-import spil.GameBoard;
+
+import control.GameController;
 
 import static org.junit.Assert.*;
 
 public class GameBoardTest {
-    GameBoard spil;
+    GameController spil;
     @Before
     public void setUp() throws Exception {
-        spil = new GameBoard();
+        spil = new GameController();
     }
 
     @After

@@ -1,16 +1,25 @@
-package spil.language;
+package language;
 
-import spil.DiceCup;
-import spil.Player;
+import entity.DiceCup;
+import entity.GameBoard;
+import entity.Player;
 
 public interface Language {
 
+
+	public String fieldNames(int fieldNumber);
+
+	public String fieldPrices(int fieldNumber, GameBoard gameBoard);
+
+	public String fieldDescription(int fieldNumber);
+	
 	/** 
 	 * Welcome message for user with commands available.
 	 * @return
 	 */
-		
 	public String welcomeMsg();
+	
+	public String askForNumberOfPlayers();
 
 	/** 
 	 * Asks for player name.
@@ -41,7 +50,7 @@ public interface Language {
 	 * Switch case that displays the field message that was landed on.
 	 * @return
 	 */
-	public String fieldMsg(DiceCup diceCup);
+	public String fieldMsg(Player player);
 	/**
 	 * Prints how many points the player have after the throw.
 	 * @return

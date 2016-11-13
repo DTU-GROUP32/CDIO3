@@ -6,7 +6,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import spil.Dice;
+import entity.Dice;
 
 public class DiceTest {
 	Dice dice;

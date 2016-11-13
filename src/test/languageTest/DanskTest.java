@@ -4,9 +4,10 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import spil.Player;
-import spil.language.Dansk;
-import spil.DiceCup;
+import entity.DiceCup;
+import entity.Player;
+import language.Dansk;
+
 import static org.junit.Assert.*;
 
 public class DanskTest {

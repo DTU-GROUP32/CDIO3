@@ -1,4 +1,4 @@
-package spil;
+package entity;
 
 public class Dice {
 	
@@ -47,9 +47,9 @@ public class Dice {
 	}
 	
 	/**
-	 * Sets face value to random generated number inbetween 1 and the int 'sides'
+	 * Sets face value to random generated number between 1 and the integer 'sides'
 	 */
 	public void roll() {
-		this.faceValue = (int) ((Math.random()*sides)+1);
+		this.faceValue = (int) (Math.random()*sides + 1);
 	}
 }

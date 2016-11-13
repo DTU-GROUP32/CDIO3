@@ -1,7 +1,7 @@
-package spil;
+package entity;
 
 public class DiceCup {
-
+	
 	private Dice[] dices;
 
 	/**
@@ -9,11 +9,10 @@ public class DiceCup {
 	 */
 	public DiceCup() {
 		this(2);
-
 	}
 
 	/**
-	 * Secondary constructor, takes diceCount for constructing dicecup with custom amount of dices
+	 * Secondary constructor, takes diceCount for constructing dice cup with custom amount of dices.
 	 * @param diceCount
 	 */
 	public DiceCup(int diceCount) {
@@ -21,7 +20,6 @@ public class DiceCup {
 		for(int i = 0; i < diceCount; i++) {
 			this.dices[i] = new Dice();
 		}
-		
 	}
 
 	/**
@@ -33,7 +31,7 @@ public class DiceCup {
 	}
 
 	/**
-	 * Rolls all of the dices, which sets them to a random number inbetween 1 and the number of sides it has
+	 * Rolls all of the dices, which sets them to a random number between 1 and the number of sides it has.
 	 */
 	public void rollDices() {
 		for(int i = 0; i < dices.length; i++) {
@@ -54,19 +52,18 @@ public class DiceCup {
 	}
 
 	/**
-	 * Sets the sides of the first dice to 'a' and the sides of the second dice to 'b', if the sum of 'a' and 'b' is 12, which returns true if true
-	 * @param a int
-	 * @param b
+	 * Sets the sides of the first dice to 'a' and the sides of the second dice to 'b',
+	 * if the sum of 'a' and 'b' is 12, and returns true if the sides were changed, otherwise false.
+	 * @param sides on dice at index 0.
+	 * @param sides on dice at index 1.
 	 * @return
 	 */
 	public boolean setDiceSides(int a, int b) {
-
 		if (a+b == 12) {
 			dices[0].setSides(a);
 			dices[1].setSides(b);
 			return true;
 		} else
 			return false;
-
 	}
 }

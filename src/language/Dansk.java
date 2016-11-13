@@ -1,11 +1,139 @@
-package spil.language;
+package language;
 
-import spil.DiceCup;
-import spil.Player;
+import entity.DiceCup;
+import entity.Field;
+import entity.GameBoard;
+import entity.Ownable;
+import entity.Player;
+import entity.Refuge;
 
 public class Dansk implements Language{
 
-	public Dansk(){}
+	@Override
+	public String fieldNames(int fieldNumber) {
+		String fieldName;
+		switch (fieldNumber) {
+		case 0:  fieldName = "START";
+		break;
+		case 1:  fieldName = "Stammelejr";
+		break;
+		case 2:  fieldName = "Second Sail";
+		break;
+		case 3:  fieldName = "Krateret";
+		break;
+		case 4:  fieldName = "Bjerghytten";
+		break;
+		case 5:  fieldName = "Bjerget";
+		break;
+		case 6:  fieldName = "Klosteret";
+		break;
+		case 7:  fieldName = "Den kolde ørken";
+		break;
+		case 8:  fieldName = "Sea Grover";
+		break;
+		case 9:  fieldName = "Den sorte grotte";
+		break;
+		case 10: fieldName = "Guldminen";
+		break;
+		case 11: fieldName = "Den store mur";
+		break;	
+		case 12: fieldName = "Stenbruddet";
+		break;	
+		case 13: fieldName = "Bjerg- landsbyen";
+		break;	
+		case 14: fieldName = "Buccaneers";
+		break;	
+		case 15: fieldName = "Det sydlige kastel";
+		break;	
+		case 16: fieldName = "Fæstningen";
+		break;	
+		case 17: fieldName = "Slotsporten";
+		break;	
+		case 18: fieldName = "Campingvognen";
+		break;	
+		case 19: fieldName = "Tårnet";
+		break;	
+		case 20: fieldName = "Privateers";
+		break;	
+		case 21: fieldName = "Slottet";
+		break;	
+		default: fieldName = "Ukendt felt DESVÆRRE!";
+		break;
+		}
+		return fieldName;
+	}
+	
+	@Override
+	public String fieldPrices(int fieldNumber, GameBoard gameBoard) {
+		String fieldPrice;
+		switch (fieldNumber) {
+		case 0:  fieldPrice = "Fristed";
+		break;
+		case 1:  fieldPrice = "Pris: 1000";
+		break;
+		case 2:  fieldPrice = "Pris: 4000";
+		break;
+		case 3:  fieldPrice = "Pris: 1500";
+		break;
+		case 4:  fieldPrice = "Pris: 2500";
+		break;
+		case 5:  fieldPrice = "Pris: 2000";
+		break;
+		case 6:  fieldPrice = "Klosteret";
+		break;
+		case 7:  fieldPrice = "Pris: 3000";
+		break;
+		case 8:  fieldPrice = "Pris: 4000";
+		break;
+		case 9:  fieldPrice = "Pris: 4000";
+		break;
+		case 10: fieldPrice = "Guldminen";
+		break;
+		case 11: fieldPrice = "Pris: 4300";
+		break;	
+		case 12: fieldPrice = "Pris: 2500";
+		break;	
+		case 13: fieldPrice = "Pris: 4700";
+		break;	
+		case 14: fieldPrice = "Pris: 4000";
+		break;	
+		case 15: fieldPrice = "Pris: 5000";
+		break;	
+		case 16: fieldPrice = "Fæstningen";
+		break;	
+		case 17: fieldPrice = "Pris: 5500";
+		break;	
+		case 18: fieldPrice = "Campingvognen";
+		break;	
+		case 19: fieldPrice = "Pris: 6000";
+		break;	
+		case 20: fieldPrice = "Pris: 4000";
+		break;	
+		case 21: fieldPrice = "Pris: 8000";
+		break;	
+		default: fieldPrice = "Ukendt felt DESVÆRRE!";
+		break;
+		}
+		return fieldPrice;
+	}
+
+	@Override
+	public String fieldDescription(int fieldNumber) {
+		String fieldName;
+		switch (fieldNumber) {
+		case 6:  fieldName = "Modtag 500 mønter";
+		break;
+		case 10: fieldName = "Betal 2000 mønter";
+		break;
+		case 16: fieldName = "Modtag 5000 mønter";
+		break;
+		case 18: fieldName = "Betal 4000 eller 10% af dine mønter";
+		break;
+		default: fieldName = "Ukendt felt DESVÆRRE!";
+		break;
+		}
+		return fieldName;
+	}
 
 	/** 
 	 * Welcome message for user with commands available.
@@ -19,10 +147,10 @@ public class Dansk implements Language{
 	/** 
 	 * Ask for the number of players that will participate 
 	 */
-
-	public String askForPlayers()
-	return "Hvor mange spillere skal være med? Der kan vælges fra 2 til 6";
-
+	@Override
+	public String askForNumberOfPlayers() {
+		return "Hvor mange spillere skal være med? Der kan vælges fra 2 til 6";
+	}
 
 	/** 
 	 * Asks for player name.
@@ -64,9 +192,9 @@ public class Dansk implements Language{
 	 * @return
 	 */
 	@Override
-	public String fieldMsg(Field fields){
+	public String fieldMsg(Player player){
 		String fieldString;
-		switch (Field.getID()) {
+		switch (player.getOnField()) {
 		case 1:  fieldString = "Du bliver inviteret til fest hos stamme lejren!";
 		break;
 		case 2:  fieldString = "Du finder et stort krater og undersøger nærmere!";
@@ -75,7 +203,7 @@ public class Dansk implements Language{
 		break;
 		case 4:  fieldString = "Du er nået til den kolde ørken!";
 		break;
-		case 5:  fieldString = "Du er kommet til en mørk krotte! ";
+		case 5:  fieldString = "Du er kommet til en sort grotte! ";
 		break;
 		case 6:  fieldString = "Du er ankommet til en stor mur!";
 		break;
@@ -126,16 +254,16 @@ public class Dansk implements Language{
 	/**
 	 * For fields that can be bought and is not owned, this message will show. 
 	 */
-	public String fieldNotOwned(Field fields){
-		return "Dette felt er ikke ejet endnu, du kan købe det for" + fields[ID].getprice() + " mønter";
+	public String fieldNotOwned(Field field){
+		return "Dette felt er ikke ejet endnu, du kan købe det for" + ((Ownable) field).getPrice() + " mønter";
 	}
 
 	/**
 	 * If territory field is owned by another player and landed on it will show this message. 
 	 */
 
-	public String territoryFieldOwned(Field fields){
-		return "Dette felt er ejet af " + fields.getowner() +  " du skal betale " + fields.getrent[ID]() + " mønter til ejeren";
+	public String territoryFieldOwned(Field field, int amountToBePaid){
+		return "Dette felt er ejet af " + ((Ownable) field).getOwner() +  " du skal betale " + amountToBePaid + " mønter til ejeren";
 	}
 
 
@@ -143,17 +271,17 @@ public class Dansk implements Language{
 	 * If player landed on refuge field it will show this message. 
 	 */
 
-	public String refugeField(Field fields){
-		return "Du modtager" + fields[ID].getprice + " mønter";
+	public String refugeField(Field field){
+		return "Du modtager" + ((Refuge) field).getBonus() + " mønter";
 	}
 
 	/**
 	 * If player landed on labor camp field that is already owned, this message will show. 
 	 */
 
-	public String laborcampFieldOwned(Field fields){
-		return "Dette felt er ejet af " + fields.getowner() + " Du skal betale " + 100*dicecup.getsum() + " mønter";
-	}
+//	public String laborcampFieldOwned(Field field){
+//		return "Dette felt er ejet af " + fields.getowner() + " Du skal betale " + 100*dicecup.getsum() + " mønter";
+//	}
 
 	/** 
 	 * Message for the unique tax field Goldmine
@@ -170,13 +298,13 @@ public class Dansk implements Language{
 	/** 
 	 * Message for fleet field
 	 */
-	public String fleetFieldOwned(Field fields){
-		return "Du skal betale for antallet af samme type felter ejeren ejer."; // Skal finde metode der kan se antal af fleets ejet af ejer. 
-	}
-
-	public String fleetFieldOwned(Field fields){
-		return "Du har nu købt feltet!";
-	}
+//	public String fleetFieldOwned(Field fields){
+//		return "Du skal betale for antallet af samme type felter ejeren ejer."; // Skal finde metode der kan se antal af fleets ejet af ejer. 
+//	}
+//
+//	public String fleetFieldOwned(Field fields){
+//		return "Du har nu købt feltet!";
+//	}
 
 	/**
 	 * Prints how many points the player have after the throw.
@@ -184,7 +312,7 @@ public class Dansk implements Language{
 	 */
 	@Override
 	public String postMsg(Player player){
-		return "Efter denne runde har " + player.getName() + " nu " + player.getBank().getBalance() + " mønter";
+		return "Efter denne runde har " + player.getName() + " nu " + player.getBankAccount().getBalance() + " mønter";
 	}
 
 	/**
@@ -193,7 +321,7 @@ public class Dansk implements Language{
 	 */
 	@Override
 	public String winnerMsg(Player player){
-		return player.getName() + " har vundet spillet med " + player.getBank().getBalance() + "mønter!";
+		return player.getName() + " har vundet spillet med " + player.getBankAccount().getBalance() + "mønter!";
 	}
 	/**
 	 * Prints the available commands in the menu.
@@ -237,7 +365,7 @@ public class Dansk implements Language{
 		StringBuilder str = new StringBuilder();
 		str.append("Stillingen er:");
 		for (int i = 0; i < players.length; i++) 
-			str.append("\n" + players[i].getName() + " har " + players[i].getBank().getBalance());
+			str.append("\n" + players[i].getName() + " har " + players[i].getBankAccount().getBalance());
 		return str.toString();
 	}
 

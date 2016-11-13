@@ -1,7 +1,8 @@
-package spil.language;
+package language;
 
-import spil.DiceCup;
-import spil.Player;
+import entity.DiceCup;
+import entity.GameBoard;
+import entity.Player;
 
 public class LanguageHandler {
 
@@ -19,15 +20,30 @@ public class LanguageHandler {
 		}
 	}
 
+	public String fieldNames(int fieldNumber) {
+		return selectedLanguage.fieldNames(fieldNumber);
+	}
+	
+	public String fieldPrices(int fieldNumber, GameBoard gameBoard) {
+		return selectedLanguage.fieldPrices(fieldNumber, gameBoard);
+	}
+	
+	public String fieldDescription(int fieldNumber) {
+		return selectedLanguage.fieldDescription(fieldNumber);
+	}
+
 	/** 
 	 * Welcome message for user with commands available.
 	 * @return
 	 */
-	
 	public String welcomeMsg(){
 		return selectedLanguage.welcomeMsg();
 	}
 
+	public String askForNumberOfPlayers() {
+		return selectedLanguage.askForNumberOfPlayers();
+	}
+	
 	/** 
 	 * Asks for player name.
 	 * @return String
@@ -65,8 +81,8 @@ public class LanguageHandler {
 	 * Switch case that displays the field message that was landed on.
 	 * @return String
 	 */
-	public String fieldMsg(DiceCup diceCup){
-		return selectedLanguage.fieldMsg(diceCup);
+	public String fieldMsg(Player player){
+		return selectedLanguage.fieldMsg(player);
 	}
 	/**
 	 * Prints how many points the player have after the throw.
@@ -135,4 +151,6 @@ public class LanguageHandler {
 	public String notifyLangChange(){
 		return selectedLanguage.notifyLangChange();
 	}
+
+
 }
