@@ -5,10 +5,11 @@ import entity.DiceCup;
 import entity.GameBoard;
 import entity.Player;
 import entity.PlayerList;
+import entity.fields.Ownable;
 import language.LanguageHandler;
 
 public class GameController {
-	
+
 	private GUIBoundary boundary;
 	private SetupController setupController;
 	private GameBoard gameBoard;
@@ -39,17 +40,15 @@ public class GameController {
 	 */
 	public void runGame() {
 		if(boundary.getButtonPressed(language.readyToBegin()));
-		while(true) {
+		while(playerList.isThereAWinner() == false) {
 			for(int i = 0; i < playerList.getPlayers().length; i++)
 				if(playerList.isThereAWinner() == false && playerList.isPlayerBroke(i) == false)
 					playTurn(playerList.getPlayer(i));
-		if(playerList.isThereAWinner())
-			break;
 		}
 		if(boundary.getButtonPressed(language.winnerMsg(playerList.whoIsTheWinner())));
 	}
-		
-			
+
+
 
 	/**
 	 * Method that receives a player object and posts a message with instructions for the player.
@@ -61,52 +60,85 @@ public class GameController {
 	 * @param Player player
 	 */
 	public void playTurn(Player player) {
-		if(boundary.getButtonPressed(language.preMsg(player)));
+		boundary.getButtonPressed(language.preMsg(player));
 		diceCup.rollDices();
 		boundary.setDices(diceCup);
 		boundary.removeCar(player.getOnField()+1, player.getName());
+		player.setLastRoll(diceCup.getSum());
 		player.movePlayer(diceCup.getSum());
 		boundary.moveCar(player.getOnField()+1, player.getName());
-//		if(boundary.getButtonPressed(language.fieldMsg(player)));
-//		if(gameBoard.getField(player.getOnField()).isOwnable() == true)
-//			if(gameBoard.getField(player.getOnField()).getOwner != null)
-				
-		
+		boundary.getButtonPressed(language.fieldMsg(player));
+		if(gameBoard.getField(player.getOnField()).isOwnable() == true)
+		{
+			if(((Ownable) gameBoard.getField(player.getOnField())).getOwner() == null)
+			{
+				if(boundary.getBoolean(language.buyingOfferMsg(), language.yes(), language.no()))
+				{
+					if(player.getBankAccount().getBalance() >= ((Ownable) gameBoard.getField(player.getOnField())).getPrice())
+					{
+					player.getBankAccount().withdraw(((Ownable) gameBoard.getField(player.getOnField())).getPrice());
+					boundary.updateBalance(player.getName(), player.getBankAccount().getBalance());
+					((Ownable) gameBoard.getField(player.getOnField())).setOwner(player);
+					boundary.setOwner(player.getOnField(), player.getName());
+					boundary.getButtonPressed(language.purchaseConfirmation());
+					} else
+					{
+						boundary.getButtonPressed(language.notEnoughMoney());
+					}
+				}
+			} else
+			{
+				int preBalance = player.getBankAccount().getBalance();
+				gameBoard.getField(player.getOnField()).landOnField(player);
+				boundary.updateBalance(player.getName(), player.getBankAccount().getBalance());
+				int amountPayed = preBalance - player.getBankAccount().getBalance();
+				boundary.getButtonPressed(language.youPaidThisMuchToThisPerson(amountPayed, ((Ownable) gameBoard.getField(player.getOnField())).getOwner()));
+			}
+		} else
+		{
+			if(player.getOnField() == 18)
+			{
+				player.setTaxChoice(boundary.getBoolean(language.getTaxChoice(), language.yes(), language.no()));
+			}
+			gameBoard.getField(player.getOnField()).landOnField(player);
+		}
+		if (player.getBankAccount().getBalance() <= 0)
+			boundary.getButtonPressed(language.youAreBroke());
 	}
 
 	/**
 	 * Gamemenu shown before the start of each turn. Lets player end game, continue or switch language
 	 * @return
 	 */
-//	public void gameMenu() {
-//		String choice = this.getInput(language.menu());
-//		switch (choice) {
-//		// Change dice sides
-//		case "1":
-//			String subchoice = this.getInput(language.changeDices());
-//			if(subchoice.length() > 2) {
-//				if(diceCup.setDiceSides(Character.getNumericValue(subchoice.charAt(0)), Character.getNumericValue(subchoice.charAt(2))))
-//					System.out.println(language.printDiceChangeSucces());
-//				break;
-//			}
-//			else System.out.println(language.printDiceChangeNotExecuted());
-//			break;
-//			// Change Language
-//		case "2":
-//			this.chooseLanguage();
-//			break;
-//			// Show Score
-//		case "3":
-//			System.out.println(language.printScore(this.players));
-//			break;
-//			// End Game
-//		case "4":
-//			System.exit(1);
-//			// Continue game
-//		case "5":
-//			break;
-//			// Default
-//		default: break;
-//		}
-//	}
+	//	public void gameMenu() {
+	//		String choice = this.getInput(language.menu());
+	//		switch (choice) {
+	//		// Change dice sides
+	//		case "1":
+	//			String subchoice = this.getInput(language.changeDices());
+	//			if(subchoice.length() > 2) {
+	//				if(diceCup.setDiceSides(Character.getNumericValue(subchoice.charAt(0)), Character.getNumericValue(subchoice.charAt(2))))
+	//					System.out.println(language.printDiceChangeSucces());
+	//				break;
+	//			}
+	//			else System.out.println(language.printDiceChangeNotExecuted());
+	//			break;
+	//			// Change Language
+	//		case "2":
+	//			this.chooseLanguage();
+	//			break;
+	//			// Show Score
+	//		case "3":
+	//			System.out.println(language.printScore(this.players));
+	//			break;
+	//			// End Game
+	//		case "4":
+	//			System.exit(1);
+	//			// Continue game
+	//		case "5":
+	//			break;
+	//			// Default
+	//		default: break;
+	//		}
+	//	}
 }

@@ -1,11 +1,11 @@
 package language;
 
 import entity.DiceCup;
-import entity.Field;
 import entity.GameBoard;
-import entity.Ownable;
 import entity.Player;
-import entity.Refuge;
+import entity.fields.Field;
+import entity.fields.Ownable;
+import entity.fields.Refuge;
 
 public class Dansk implements Language{
 

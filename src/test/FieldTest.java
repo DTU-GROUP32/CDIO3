@@ -6,8 +6,8 @@ import org.junit.Test;
 import org.junit.Assert;
 import org.omg.PortableInterceptor.Interceptor;
 
-import entity.Field;
 import entity.Player;
+import entity.fields.Field;
 
 import static org.junit.Assert.*;
 
