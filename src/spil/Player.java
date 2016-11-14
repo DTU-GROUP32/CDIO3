@@ -5,6 +5,8 @@ public class Player{
 	private Bank bankAccount;
 	private int ID;
 	private static int nextID = 0;
+	private int laborCampsOwned;
+	private int fleetsOwned;
 
 	/**
 	 * Default constructor
@@ -53,4 +55,21 @@ public class Player{
 	public int getID(){
 		return this.ID;
 	}
+	
+	public int getLaborCampsOwned() {
+		return laborCampsOwned;
+	}
+	
+	public void setLaborCampsOwned(int laborCampsOwned) {
+		this.laborCampsOwned = laborCampsOwned;
+	}
+	
+	public int getFleetsOwned() {
+		return fleetsOwned;
+	}
+	
+	public void setFleetsOwned(int fleetsOwned) {
+		this.fleetsOwned = fleetsOwned;
+	}
+	
 }

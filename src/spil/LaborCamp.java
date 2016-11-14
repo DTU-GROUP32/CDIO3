@@ -12,16 +12,8 @@ public class LaborCamp extends Ownable {
 		this.baseRent = baseRent;
 	}
 	
-	
-	
 	@Override
-	public int getRent() {
-		return baseRent;
-	}
-	
-	@Override
-	public void landOnField(Player player) {
-		
+	public void landOnField(Player player) {	
 		if (owner != null) {
 			player.getBank().changeBalance(determineRent()*(-1));
 			owner.getBank().changeBalance(determineRent());
@@ -32,24 +24,19 @@ public class LaborCamp extends Ownable {
 	}
 	
 	public int determineRent() {
-		// TODO Need to add a part with the double amount, when owning 2 Labor Camps
-		Scanner input = new Scanner(System.in);
 		DiceCup dc = new DiceCup();
-		
 		dc.rollDices();
-		// MSG HERE?
-		baseRent = dc.getSum()*100;
-		
-		input.close();
-		
+		if (this.owner.getLaborCampsOwned() == 1) {
+			baseRent = dc.getSum()*100;
+		} else if (this.owner.getLaborCampsOwned() == 2) {
+			baseRent = dc.getSum()*200;
+		}
 		return baseRent;
-		
 	}
 	
 	public void buyTerritory(Player player) {
-		// TODO Method needs to be reworked. This is only a temporary version
-		// System.out.println("Dette felt ejes ikke af nogen. Feltet koster " + this.price);
 		Scanner input = new Scanner(System.in);
+		// System.out.println("Dette felt ejes ikke af nogen. Feltet koster " + this.price);
 		// System.out.println("Tast 1 for at gå videre");
 		// System.out.println("Tast 2 for at købe dette felt");
 		
@@ -61,6 +48,7 @@ public class LaborCamp extends Ownable {
 		case 2:
 			player.getBank().changeBalance(this.price*(-1));
 			setOwner(player);
+			player.setFleetsOwned(player.getLaborCampsOwned() + 1);
 			// System.out.println("Feltet blev købt");
 			break;
 		default:
@@ -69,16 +57,24 @@ public class LaborCamp extends Ownable {
 		
 		input.close();
 	}
+	
+	@Override
+	public int getRent() {
+		return baseRent;
+	}
 
 	@Override
 	public void setOwner(Player newOwner) {
-		// TODO Auto-generated method stub
-		
+		this.owner = newOwner;		
 	}
 
 	@Override
 	public Player getOwner() {
-		// TODO Auto-generated method stub
+		return owner;
+	}
+
+	@Override
+	public String getFieldMessage(Player player) {
 		return null;
 	}
 
