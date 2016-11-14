@@ -1,6 +1,5 @@
 package language;
 
-import entity.DiceCup;
 import entity.GameBoard;
 import entity.Player;
 
@@ -19,6 +18,14 @@ public class LanguageHandler {
 		default: selectedLanguage = new English();
 		}
 	}
+	
+	/**
+	 * Notifies of language change
+	 * @return String
+	 */
+	public String notifyLangChange(){
+		return selectedLanguage.notifyLangChange();
+	}
 
 	public String fieldNames(int fieldNumber) {
 		return selectedLanguage.fieldNames(fieldNumber);
@@ -32,14 +39,6 @@ public class LanguageHandler {
 		return selectedLanguage.fieldDescription(fieldNumber);
 	}
 
-	/** 
-	 * Welcome message for user with commands available.
-	 * @return
-	 */
-	public String welcomeMsg(){
-		return selectedLanguage.welcomeMsg();
-	}
-
 	public String askForNumberOfPlayers() {
 		return selectedLanguage.askForNumberOfPlayers();
 	}
@@ -51,7 +50,6 @@ public class LanguageHandler {
 	public String askForPlayerName(int playerNumber){
 		return selectedLanguage.askForPlayerName(playerNumber);
 	}
-
 
 	/** 
 	 * Tells user that the game will start shortly. 
@@ -70,26 +68,47 @@ public class LanguageHandler {
 	}
 
 	/**
-	 * Displays the result of the dice roll. 
-	 * @return String
-	 */
-	public String rollResult(DiceCup diceCup){
-		return selectedLanguage.rollResult(diceCup);
-	}
-
-	/**
 	 * Switch case that displays the field message that was landed on.
 	 * @return String
 	 */
-	public String fieldMsg(Player player){
-		return selectedLanguage.fieldMsg(player);
+	public String fieldMsg(int fieldNumber){
+		return selectedLanguage.fieldMsg(fieldNumber);
 	}
-	/**
-	 * Prints how many points the player have after the throw.
-	 * @return String
-	 */
-	public String postMsg(Player player){
-		return selectedLanguage.postMsg(player);
+	
+	public String buyingOfferMsg(int price){
+		return selectedLanguage.buyingOfferMsg(price);
+	}
+
+	public String yes() {
+		return selectedLanguage.yes();
+	}
+
+	public String no() {
+		return selectedLanguage.no();
+	}
+	
+	public String purchaseConfirmation() {
+		return selectedLanguage.purchaseConfirmation();
+	}
+
+	public String notEnoughMoney() {
+		return selectedLanguage.notEnoughMoney();
+	}
+
+	public String youPaidThisMuchToThisPerson(int amountPayed, Player owner) {
+		return selectedLanguage.youPaidThisMuchToThisPerson(amountPayed, owner);
+	}
+
+	public String getTaxChoice() {
+		return selectedLanguage.getTaxChoice();
+	}
+
+	public String nonOwnableFieldEffectMsg(int onField) {
+		return selectedLanguage.nonOwnableFieldEffectMsg(onField);
+	}
+
+	public String youAreBroke() {
+		return selectedLanguage.youAreBroke();
 	}
 
 	/**
@@ -107,6 +126,7 @@ public class LanguageHandler {
 	public String menu(){
 		return selectedLanguage.menu();
 	}
+	
 	/**
 	 * Prints the rules of the game.
 	 * @return String
@@ -114,6 +134,7 @@ public class LanguageHandler {
 	public String printRules(){
 		return selectedLanguage.printRules();
 	}
+	
 	/**
 	 * Prints the score. 
 	 * @return String
@@ -129,6 +150,7 @@ public class LanguageHandler {
 	public String changeDices(){
 		return selectedLanguage.changeDices();
 	}
+	
 	/**
 	 * Prints that the dices were changed successfully.			
 	 * @return String
@@ -136,6 +158,7 @@ public class LanguageHandler {
 	public String printDiceChangeSucces(){
 		return selectedLanguage.printDiceChangeSucces();
 	}
+	
 	/**
 	 * Prints a error message if the dices couldn't be changed.
 	 * @return String
@@ -143,14 +166,4 @@ public class LanguageHandler {
 	public String printDiceChangeNotExecuted(){
 		return selectedLanguage.printDiceChangeNotExecuted();
 	}
-
-	/**
-	 * Notifies of language change
-	 * @return String
-	 */
-	public String notifyLangChange(){
-		return selectedLanguage.notifyLangChange();
-	}
-
-
 }

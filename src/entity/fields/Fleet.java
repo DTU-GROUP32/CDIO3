@@ -20,6 +20,7 @@ public class Fleet extends Ownable {
 		return values[numberOfFleetsOwnedByEachPlayer[owner.getID()]-1];
 	}
 
+	//TODO get this method called instead of ownable one.
 	@Override
 	public void buyField(Player player) {
 		super.buyField(player);

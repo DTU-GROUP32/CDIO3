@@ -63,24 +63,24 @@ public class GameController {
 		boundary.getButtonPressed(language.preMsg(player));
 		diceCup.rollDices();
 		boundary.setDices(diceCup);
-		boundary.removeCar(player.getOnField()+1, player.getName());
+		boundary.removeCar(player.getOnField(), player.getName());
 		player.setLastRoll(diceCup.getSum());
 		player.movePlayer(diceCup.getSum());
-		boundary.moveCar(player.getOnField()+1, player.getName());
-		boundary.getButtonPressed(language.fieldMsg(player));
-		if(gameBoard.getField(player.getOnField()).isOwnable() == true)
+		boundary.moveCar(player.getOnField(), player.getName());
+		boundary.getButtonPressed(language.fieldMsg(player.getOnField()-1));
+		if(gameBoard.getField(player.getOnField()-1).isOwnable() == true)
 		{
-			if(((Ownable) gameBoard.getField(player.getOnField())).getOwner() == null)
+			if(((Ownable) gameBoard.getField(player.getOnField()-1)).getOwner() == null)
 			{
-				if(boundary.getBoolean(language.buyingOfferMsg(), language.yes(), language.no()))
+				if(boundary.getBoolean(language.buyingOfferMsg(((Ownable) gameBoard.getField(player.getOnField()-1)).getPrice()), language.yes(), language.no()))
 				{
-					if(player.getBankAccount().getBalance() >= ((Ownable) gameBoard.getField(player.getOnField())).getPrice())
+					if(player.getBankAccount().getBalance() > ((Ownable) gameBoard.getField(player.getOnField()-1)).getPrice())
 					{
-					player.getBankAccount().withdraw(((Ownable) gameBoard.getField(player.getOnField())).getPrice());
-					boundary.updateBalance(player.getName(), player.getBankAccount().getBalance());
-					((Ownable) gameBoard.getField(player.getOnField())).setOwner(player);
-					boundary.setOwner(player.getOnField(), player.getName());
-					boundary.getButtonPressed(language.purchaseConfirmation());
+						player.getBankAccount().withdraw(((Ownable) gameBoard.getField(player.getOnField()-1)).getPrice());
+						boundary.updateBalance(player.getName(), player.getBankAccount().getBalance());
+						((Ownable) gameBoard.getField(player.getOnField()-1)).setOwner(player);
+						boundary.setOwner(player.getOnField(), player.getName());
+						boundary.getButtonPressed(language.purchaseConfirmation());
 					} else
 					{
 						boundary.getButtonPressed(language.notEnoughMoney());
@@ -88,22 +88,27 @@ public class GameController {
 				}
 			} else
 			{
+				//TODO is owned by msg
 				int preBalance = player.getBankAccount().getBalance();
-				gameBoard.getField(player.getOnField()).landOnField(player);
+				gameBoard.getField(player.getOnField()-1).landOnField(player);
 				boundary.updateBalance(player.getName(), player.getBankAccount().getBalance());
+				boundary.updateBalance(((Ownable) gameBoard.getField(player.getOnField()-1)).getOwner().getName(), ((Ownable) gameBoard.getField(player.getOnField()-1)).getOwner().getBankAccount().getBalance());
 				int amountPayed = preBalance - player.getBankAccount().getBalance();
-				boundary.getButtonPressed(language.youPaidThisMuchToThisPerson(amountPayed, ((Ownable) gameBoard.getField(player.getOnField())).getOwner()));
+				boundary.getButtonPressed(language.youPaidThisMuchToThisPerson(amountPayed, ((Ownable) gameBoard.getField(player.getOnField()-1)).getOwner()));
 			}
 		} else
 		{
-			if(player.getOnField() == 18)
-			{
+			if(player.getOnField()-1 == 18)
 				player.setTaxChoice(boundary.getBoolean(language.getTaxChoice(), language.yes(), language.no()));
-			}
-			gameBoard.getField(player.getOnField()).landOnField(player);
+			else boundary.getButtonPressed(language.nonOwnableFieldEffectMsg(player.getOnField()-1));
+			gameBoard.getField(player.getOnField()-1).landOnField(player);
+			boundary.updateBalance(player.getName(), player.getBankAccount().getBalance());
 		}
 		if (player.getBankAccount().getBalance() <= 0)
+		{
 			boundary.getButtonPressed(language.youAreBroke());
+			boundary.removeCar(player.getOnField(), player.getName());
+		}
 	}
 
 	/**
