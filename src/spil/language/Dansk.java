@@ -20,7 +20,7 @@ public class Dansk implements Language{
 	 * Ask for the number of players that will participate 
 	 */
 
-	public String askForPlayers()
+	public String askForPlayers();
 	return "Hvor mange spillere skal være med? Der kan vælges fra 2 til 6";
 
 
