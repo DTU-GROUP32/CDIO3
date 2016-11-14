@@ -3,9 +3,10 @@ package test.languageTest;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import spil.DiceCup;
-import spil.Player;
-import spil.language.English;
+
+import entity.DiceCup;
+import entity.Player;
+import language.English;
 
 import static org.junit.Assert.*;
 

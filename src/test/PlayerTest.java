@@ -5,9 +5,12 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.After;
 import org.junit.Test;
-import org.junit.Assert;
 
-import spil.*;
+import control.*;
+import entity.BankAccount;
+import entity.Player;
+
+import org.junit.Assert;
 
 public class PlayerTest {
     Player player;
@@ -41,7 +44,7 @@ public class PlayerTest {
     
     @Test
     public final void getBank() throws Exception {
-        Bank playerBank = player.getBank();
+        BankAccount playerBank = player.getBank();
         Assert.assertEquals(1000, playerBank.getBalance());
     }
 }

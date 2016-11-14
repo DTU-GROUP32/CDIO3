@@ -4,8 +4,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import spil.Dice;
-import spil.DiceCup;
+import entity.Dice;
+import entity.DiceCup;
 
 import static org.junit.Assert.*;
 
