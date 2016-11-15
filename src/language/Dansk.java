@@ -237,10 +237,14 @@ public class Dansk implements Language{
 		return "Du havde desværre ikke nok mønter..";
 	}
 
+	public String landedOnOwnedField(Player owner) {
+		return "Dette felt er desværre allerede købt, det kommer til at koste!";
+	}
+
 	@Override
 	public String youPaidThisMuchToThisPerson(int amountPayed, Player owner) {
-		return "Dette felt er desværre allerede købt, du skal derfor betale " + amountPayed
-				+ " til " + owner.getName() + ".";
+		return "Du betalte " + amountPayed
+				+ " mønter til " + owner.getName() + ".";
 	}
 
 	@Override

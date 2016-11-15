@@ -8,7 +8,7 @@ public abstract class Ownable extends Field {
 	protected Player owner;
 	
 	public Ownable(int price){
-		this.Ownable = true;
+		this.ownable = true;
 		this.price = price;
 		this.owner = null;
 	}

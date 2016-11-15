@@ -95,6 +95,10 @@ public class LanguageHandler {
 		return selectedLanguage.notEnoughMoney();
 	}
 
+	public String landedOnOwnedField(Player owner) {
+		return selectedLanguage.landedOnOwnedField(owner);
+	}
+	
 	public String youPaidThisMuchToThisPerson(int amountPayed, Player owner) {
 		return selectedLanguage.youPaidThisMuchToThisPerson(amountPayed, owner);
 	}
