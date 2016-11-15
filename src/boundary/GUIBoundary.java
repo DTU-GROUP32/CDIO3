@@ -135,11 +135,11 @@ public class GUIBoundary {
 	}
 	
 	public void moveCar(int fieldNumber, String playerName) {
-		GUI.setCar(fieldNumber, playerName);
+		GUI.setCar(convertFieldNumber(fieldNumber), playerName);
 	}
 	
 	public void removeCar(int fieldNumber, String playerName) {
-		GUI.removeCar(fieldNumber, playerName);
+		GUI.removeCar(convertFieldNumber(fieldNumber), playerName);
 	}
 	
 	public void updateBalance(String playerName, int newBalance) {
@@ -147,7 +147,7 @@ public class GUIBoundary {
 	}
 	
 	public void setOwner(int fieldNumber, String playerName) {
-		GUI.setOwner(fieldNumber, playerName);
+		GUI.setOwner(convertFieldNumber(fieldNumber), playerName);
 	}
 	
 	public int getInteger(String message, int min, int max) {
@@ -170,5 +170,10 @@ public class GUIBoundary {
 		return true;
 	}
 	
-	
+	private int convertFieldNumber(int fieldNumber) {
+		int convertedFieldNumber = fieldNumber + 1;
+		while(convertedFieldNumber > 22)
+			convertedFieldNumber -= 22;
+		return convertedFieldNumber;
+	}
 }

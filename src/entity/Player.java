@@ -33,7 +33,7 @@ public class Player{
 	public Player(String name, int startingBalance) {
 		playerName = name;
 		bankAccount = new BankAccount(startingBalance);
-		this.onField = 1;
+		this.onField = 0;
 		this.ID = nextID++;
 	}
 	

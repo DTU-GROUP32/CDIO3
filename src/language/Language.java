@@ -35,6 +35,8 @@ public interface Language {
 
 	public String notEnoughMoney();
 
+	public String landedOnOwnedField(Player owner);
+
 	public String youPaidThisMuchToThisPerson(int amountPayed, Player owner);
 
 	public String getTaxChoice();
@@ -56,5 +58,4 @@ public interface Language {
 	public String printDiceChangeSucces();
 
 	public String printDiceChangeNotExecuted();
-
 }

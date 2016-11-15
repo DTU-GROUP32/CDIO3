@@ -9,10 +9,10 @@ public class Tax extends Field {
 
 	public Tax(int taxAmount) {
 		this(taxAmount,0);
+		this.ownable = false;
 	}
 
 	public Tax(int taxAmount, int taxRate) {
-		this.Ownable = false;
 		this.taxAmount = taxAmount;
 		this.taxRate = taxRate;
 	}
@@ -32,4 +32,25 @@ public class Tax extends Field {
 		else player.getBankAccount().withdraw(taxAmount);
 		player.setTaxChoice(false);
 	}
+	
+	@Override
+	public int getPrice() {
+		return -1;
+	}
+
+	@Override
+	public Player getOwner() {
+		return null;
+	}
+
+	@Override
+	public void setOwner(Player newOwner) {}
+
+	@Override
+	public int getRent() {
+		return -1;
+	}
+
+	@Override
+	public void buyField(Player player) {}
 }
