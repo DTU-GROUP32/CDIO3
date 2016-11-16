@@ -3,16 +3,18 @@ package test;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import entity.BankAccount;
+
 import org.junit.Assert;
-import spil.Bank;
 
 import static org.junit.Assert.*;
 
 public class BankTest {
-    private Bank bank;
+    private BankAccount bank;
     @Before
     public void setUp() throws Exception {
-        bank = new Bank();
+        bank = new BankAccount();
     }
 
     @After
