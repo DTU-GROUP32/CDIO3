@@ -15,21 +15,14 @@ public class gameControllerTestStub {
 	 * @param wantToBuy - position on whether to buy an unowned field or not, true = wants to buy, false = doesn't want to buy.
 	 */
 	public void playTurnTest(GameBoard gameBoard, Player player, boolean wantToBuy) {
-		int fieldNumber = player.getOnField();
-		Field field = gameBoard.getField(fieldNumber);
+		Field field = gameBoard.getField(player.getOnField());
 		if(field.isOwnable())
 		{
-			Player ownerOfField = field.getOwner();
-			if(ownerOfField == null)
+			if(field.getOwner() == null)
 			{
-				int priceOfField = field.getPrice();
 				if(wantToBuy)
 				{
-					if(player.getBankAccount().getBalance() > priceOfField)
-					{
-						player.getBankAccount().withdraw(priceOfField);
 						field.buyField(player);
-					}
 				}
 			} else
 			{

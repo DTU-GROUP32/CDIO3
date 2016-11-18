@@ -59,7 +59,7 @@ public class Player{
 	 */
 	public void movePlayer(int roll){
 		this.onField += roll;
-		while(this.onField > 22)
+		while(this.onField > 21)
 			this.onField -= 22;
 	}
 	

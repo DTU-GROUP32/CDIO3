@@ -148,7 +148,7 @@ public class Dansk implements Language{
 
 	@Override
 	public String askForPlayerName(int playerNumber){
-		return "Indtast spiller " + playerNumber + "'s navn";
+		return "Indtast spiller " + playerNumber + "'s navn, alle spillere skal have forskellige navne.";
 	}
 
 	@Override

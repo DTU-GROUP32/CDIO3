@@ -36,7 +36,7 @@ public class GameController {
 				if(playerList.isThereAWinner() == false && playerList.isPlayerBroke(i) == false)
 					playTurn(playerList.getPlayer(i));
 		}
-		if(boundary.getButtonPressed(language.winnerMsg(playerList.whoIsTheWinner())));
+		boundary.getButtonPressed(language.winnerMsg(playerList.whoIsTheWinner()));
 	}
 
 
@@ -59,7 +59,7 @@ public class GameController {
 		player.movePlayer(diceCup.getSum());
 		int fieldNumber = player.getOnField();
 		Field field = gameBoard.getField(fieldNumber);
-		boundary.moveCar(fieldNumber, player.getName());
+		boundary.setCar(fieldNumber, player.getName());
 		boundary.getButtonPressed(language.fieldMsg(fieldNumber));
 		if(field.isOwnable())
 		{
@@ -71,9 +71,8 @@ public class GameController {
 				{
 					if(player.getBankAccount().getBalance() > priceOfField)
 					{
-						player.getBankAccount().withdraw(priceOfField);
-						boundary.updateBalance(player.getName(), player.getBankAccount().getBalance());
 						field.buyField(player);
+						boundary.updateBalance(player.getName(), player.getBankAccount().getBalance());
 						boundary.setOwner(fieldNumber, player.getName());
 						boundary.getButtonPressed(language.purchaseConfirmation());
 					} else
@@ -103,6 +102,8 @@ public class GameController {
 		{
 			boundary.getButtonPressed(language.youAreBroke());
 			boundary.removeCar(fieldNumber, player.getName());
+			boundary.releasePlayersFields(gameBoard, player);
+			gameBoard.releasePlayersFields(player);
 		}
 	}
 
