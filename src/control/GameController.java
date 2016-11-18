@@ -5,6 +5,7 @@ import entity.DiceCup;
 import entity.GameBoard;
 import entity.Player;
 import entity.PlayerList;
+import entity.fields.Field;
 import language.LanguageHandler;
 
 public class GameController {
@@ -23,15 +24,6 @@ public class GameController {
 		playerList = setupController.setupPlayers();
 		boundary = setupController.getBoundary();
 		diceCup = new DiceCup();
-	}
-
-	/**
-	 * Entry method for starting the program
-	 * @param args unused
-	 */
-	public static void main(String[] args){
-		GameController spil = new GameController();
-		spil.runGame();
 	}
 
 	/**1
@@ -66,21 +58,22 @@ public class GameController {
 		player.setLastRoll(diceCup.getSum());
 		player.movePlayer(diceCup.getSum());
 		int fieldNumber = player.getOnField();
+		Field field = gameBoard.getField(fieldNumber);
 		boundary.moveCar(fieldNumber, player.getName());
 		boundary.getButtonPressed(language.fieldMsg(fieldNumber));
-		if(gameBoard.getField(fieldNumber).isOwnable())
+		if(field.isOwnable())
 		{
-			Player ownerOfField = gameBoard.getField(fieldNumber).getOwner();
+			Player ownerOfField = field.getOwner();
 			if(ownerOfField == null)
 			{
-				int priceOfField = gameBoard.getField(fieldNumber).getPrice();
+				int priceOfField = field.getPrice();
 				if(boundary.getBoolean(language.buyingOfferMsg(priceOfField), language.yes(), language.no()))
 				{
 					if(player.getBankAccount().getBalance() > priceOfField)
 					{
 						player.getBankAccount().withdraw(priceOfField);
 						boundary.updateBalance(player.getName(), player.getBankAccount().getBalance());
-						gameBoard.getField(fieldNumber).buyField(player);
+						field.buyField(player);
 						boundary.setOwner(fieldNumber, player.getName());
 						boundary.getButtonPressed(language.purchaseConfirmation());
 					} else
@@ -92,7 +85,7 @@ public class GameController {
 			{
 				boundary.getButtonPressed(language.landedOnOwnedField(ownerOfField));
 				int preBalance = player.getBankAccount().getBalance();
-				gameBoard.getField(fieldNumber).landOnField(player);
+				field.landOnField(player);
 				boundary.updateBalance(player.getName(), player.getBankAccount().getBalance());
 				boundary.updateBalance(ownerOfField.getName(), ownerOfField.getBankAccount().getBalance());
 				int amountPayed = preBalance - player.getBankAccount().getBalance();
@@ -103,7 +96,7 @@ public class GameController {
 			if(fieldNumber == 18)
 				player.setTaxChoice(boundary.getBoolean(language.getTaxChoice(), language.yes(), language.no()));
 			else boundary.getButtonPressed(language.nonOwnableFieldEffectMsg(fieldNumber));
-			gameBoard.getField(fieldNumber).landOnField(player);
+			field.landOnField(player);
 			boundary.updateBalance(player.getName(), player.getBankAccount().getBalance());
 		}
 		if (player.getBankAccount().getBalance() <= 0)
