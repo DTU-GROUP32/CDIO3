@@ -39,9 +39,12 @@ public class SetupController {
 		playerList = new PlayerList(boundary.getInteger(language.askForNumberOfPlayers(), 2, 6));
 		for(int i = 0; i < playerList.getPlayers().length; i++)
 		{
-			String name = boundary.getString(language.askForPlayerName(i+1));
+			String name;
+			do {
+				name = boundary.getString(language.askForPlayerName(i+1));
+			} while (playerList.isNameTaken(name));
 			playerList.addPlayer(i, name);
-			boundary.addPlayer(name, 30000);
+			boundary.addPlayer(playerList.getPlayer(i));
 		}
 		return playerList;
 	}

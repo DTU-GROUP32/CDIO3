@@ -2,6 +2,8 @@ package boundary;
 
 import java.awt.Color;
 
+import desktop_codebehind.Car;
+import desktop_codebehind.Car.Builder;
 import desktop_fields.Brewery;
 import desktop_fields.Field;
 import desktop_fields.Refuge;
@@ -11,10 +13,11 @@ import desktop_fields.Tax;
 import desktop_resources.GUI;
 import entity.DiceCup;
 import entity.GameBoard;
+import entity.Player;
 import language.LanguageHandler;
 
 public class GUIBoundary {
-	
+
 	public void createGameBoard(GameBoard gameBoard, LanguageHandler language) {
 		Field[] fields = new Field[gameBoard.getFields().length];
 		fields[0] = new Street.Builder()
@@ -120,60 +123,116 @@ public class GUIBoundary {
 		GUI.create(fields);
 		GUI.setDice(1, 1);
 	}
-	
+
 	public String getLanguage() {
 		return GUI.getUserSelection("Select language. \nVælg sprog.", "Dansk", "English");
 	}
-	
+
 	public void setDices(DiceCup diceCup) {
 		GUI.setDice(diceCup.getDices()[0].getFaceValue(), diceCup.getDices()[1].getFaceValue());
 	}
-	
-	public void addPlayer(String name, int startingBalance) {
-		GUI.addPlayer(name, startingBalance);
-		GUI.setCar(1, name);
+
+	public void addPlayer(Player player) {
+		Builder carBuilder = new Car.Builder();
+		switch (player.getID()) {
+		case 0:
+			carBuilder
+			.typeUfo()
+			.patternCheckered()
+			.primaryColor(Color.RED)
+			.secondaryColor(Color.GRAY);
+			break;
+		case 1:
+			carBuilder
+			.typeRacecar()
+			.patternDiagonalDualColor()
+			.primaryColor(Color.GREEN)
+			.secondaryColor(Color.ORANGE);
+			break;
+		case 2:
+			carBuilder
+			.typeTractor()
+			.patternDotted()
+			.primaryColor(Color.BLUE)
+			.secondaryColor(Color.CYAN);
+			break;
+		case 3:
+			carBuilder
+			.typeUfo()
+			.patternZebra()
+			.primaryColor(Color.YELLOW)
+			.secondaryColor(Color.MAGENTA);
+			break;
+		case 4:
+			carBuilder
+			.typeRacecar()
+			.patternHorizontalGradiant()
+			.primaryColor(Color.BLACK)
+			.secondaryColor(Color.WHITE);
+			break;
+		case 5:
+			carBuilder
+			.typeTractor()
+			.patternHorizontalDualColor()
+			.primaryColor(Color.WHITE)
+			.secondaryColor(Color.PINK);
+			break;
+		default:
+			break;
+		}
+		Car car = carBuilder.build();
+		GUI.addPlayer(player.getName(), player.getBankAccount().getBalance(), car);
+		this.setCar(player.getOnField(), player.getName());
 	}
-	
-	public void moveCar(int fieldNumber, String playerName) {
+
+	public void setCar(int fieldNumber, String playerName) {
 		GUI.setCar(convertFieldNumber(fieldNumber), playerName);
 	}
-	
+
 	public void removeCar(int fieldNumber, String playerName) {
 		GUI.removeCar(convertFieldNumber(fieldNumber), playerName);
 	}
-	
+
 	public void updateBalance(String playerName, int newBalance) {
 		GUI.setBalance(playerName, newBalance);
 	}
-	
+
 	public void setOwner(int fieldNumber, String playerName) {
 		GUI.setOwner(convertFieldNumber(fieldNumber), playerName);
 	}
-	
+
 	public int getInteger(String message, int min, int max) {
 		return GUI.getUserInteger(message, min, max);
 	}
-	
+
 	public String getString(String message) {
 		return GUI.getUserString(message);
 	}
-	
+
 	public boolean getBoolean(String message, String optionTrue, String optionFalse) {
 		String response = GUI.getUserButtonPressed(message, optionTrue, optionFalse);
 		if (response.equals(optionTrue))
 			return true;
 		else return false;
 	}
-	
+
 	public boolean getButtonPressed(String message) {
 		GUI.getUserButtonPressed(message, "OK!");
 		return true;
 	}
-	
+
 	private int convertFieldNumber(int fieldNumber) {
 		int convertedFieldNumber = fieldNumber + 1;
 		while(convertedFieldNumber > 22)
 			convertedFieldNumber -= 22;
 		return convertedFieldNumber;
+	}
+
+	public void releasePlayersFields(GameBoard gameBoard, Player player) {
+		for(int i = 0; i < gameBoard.getFields().length; i++)
+			if(gameBoard.getField(i).isOwnable())
+				if(gameBoard.getField(i).getOwner() != null)
+					if(gameBoard.getField(i).getOwner().equals(player.getName()))
+						GUI.removeOwner(convertFieldNumber(i));
 	}
 }

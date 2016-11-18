@@ -5,6 +5,7 @@ import entity.Player;
 public class LaborCamp extends Ownable {
 	
 	private int baseRent;
+	private static int[] numberOfLaborCampsOwnedByEachPlayer = {0,0,0,0,0,0};
 	
 	public LaborCamp() {
 		super(2500);
@@ -19,8 +20,12 @@ public class LaborCamp extends Ownable {
 	
 	@Override
 	public int getRent() {
-		return baseRent;
+		return baseRent * numberOfLaborCampsOwnedByEachPlayer[owner.getID()];
 	}
 	
-	
+	@Override
+	public void buyField(Player player) {
+		super.buyField(player);
+		numberOfLaborCampsOwnedByEachPlayer[player.getID()]++;
+	}
 }

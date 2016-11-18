@@ -54,4 +54,12 @@ public class PlayerList {
 	public Player getPlayer(int atIndex) {
 		return players[atIndex];
 	}
+	
+	public boolean isNameTaken(String name) {
+		boolean answer = false;
+		for(Player player: this.players)
+			if(player.getName().equalsIgnoreCase(name))
+				answer = true;
+		return answer;
+	}
 }
