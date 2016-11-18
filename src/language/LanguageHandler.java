@@ -18,7 +18,7 @@ public class LanguageHandler {
 		default: selectedLanguage = new English();
 		}
 	}
-	
+
 	/**
 	 * Notifies of language change
 	 * @return String
@@ -30,11 +30,11 @@ public class LanguageHandler {
 	public String fieldNames(int fieldNumber) {
 		return selectedLanguage.fieldNames(fieldNumber);
 	}
-	
+
 	public String fieldPrices(int fieldNumber, GameBoard gameBoard) {
 		return selectedLanguage.fieldPrices(fieldNumber, gameBoard);
 	}
-	
+
 	public String fieldDescription(int fieldNumber) {
 		return selectedLanguage.fieldDescription(fieldNumber);
 	}
@@ -42,7 +42,7 @@ public class LanguageHandler {
 	public String askForNumberOfPlayers() {
 		return selectedLanguage.askForNumberOfPlayers();
 	}
-	
+
 	/** 
 	 * Asks for player name.
 	 * @return String
@@ -74,7 +74,7 @@ public class LanguageHandler {
 	public String fieldMsg(int fieldNumber){
 		return selectedLanguage.fieldMsg(fieldNumber);
 	}
-	
+
 	public String buyingOfferMsg(int price){
 		return selectedLanguage.buyingOfferMsg(price);
 	}
@@ -86,7 +86,7 @@ public class LanguageHandler {
 	public String no() {
 		return selectedLanguage.no();
 	}
-	
+
 	public String purchaseConfirmation() {
 		return selectedLanguage.purchaseConfirmation();
 	}
@@ -98,9 +98,13 @@ public class LanguageHandler {
 	public String landedOnOwnedField(Player owner) {
 		return selectedLanguage.landedOnOwnedField(owner);
 	}
-	
+
 	public String youPaidThisMuchToThisPerson(int amountPayed, Player owner) {
 		return selectedLanguage.youPaidThisMuchToThisPerson(amountPayed, owner);
+	}
+
+	public String youOwnThisField() {
+		return selectedLanguage.youOwnThisField();
 	}
 
 	public String getTaxChoice() {
@@ -130,7 +134,7 @@ public class LanguageHandler {
 	public String menu(){
 		return selectedLanguage.menu();
 	}
-	
+
 	/**
 	 * Prints the rules of the game.
 	 * @return String
@@ -138,7 +142,7 @@ public class LanguageHandler {
 	public String printRules(){
 		return selectedLanguage.printRules();
 	}
-	
+
 	/**
 	 * Prints the score. 
 	 * @return String
@@ -154,7 +158,7 @@ public class LanguageHandler {
 	public String changeDices(){
 		return selectedLanguage.changeDices();
 	}
-	
+
 	/**
 	 * Prints that the dices were changed successfully.			
 	 * @return String
@@ -162,7 +166,7 @@ public class LanguageHandler {
 	public String printDiceChangeSucces(){
 		return selectedLanguage.printDiceChangeSucces();
 	}
-	
+
 	/**
 	 * Prints a error message if the dices couldn't be changed.
 	 * @return String

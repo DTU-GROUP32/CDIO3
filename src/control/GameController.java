@@ -82,6 +82,8 @@ public class GameController {
 				}
 			} else
 			{
+				if(field.getOwner().getName().equals(player.getName()) == false)
+				{
 				boundary.getButtonPressed(language.landedOnOwnedField(ownerOfField));
 				int preBalance = player.getBankAccount().getBalance();
 				field.landOnField(player);
@@ -89,6 +91,8 @@ public class GameController {
 				boundary.updateBalance(ownerOfField.getName(), ownerOfField.getBankAccount().getBalance());
 				int amountPayed = preBalance - player.getBankAccount().getBalance();
 				boundary.getButtonPressed(language.youPaidThisMuchToThisPerson(amountPayed, ownerOfField));
+				}
+				boundary.getButtonPressed(language.youOwnThisField());
 			}
 		} else
 		{
