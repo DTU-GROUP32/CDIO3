@@ -164,6 +164,8 @@ public class Dansk implements Language{
 	public String fieldMsg(int fieldNumber){
 		String fieldString;
 		switch (fieldNumber) {
+		case 0:  fieldString = "START";
+		break;
 		case 1:  fieldString = "Du bliver inviteret til fest hos stammelejren!";
 		break;
 		case 2:  fieldString = "Du sejler en tur med Second Sail";
@@ -248,6 +250,11 @@ public class Dansk implements Language{
 	}
 
 	@Override
+	public String youOwnThisField() {
+		return "Slap af! Du ejer selv dette felt ;)";
+	}
+	
+	@Override
 	public String getTaxChoice() {
 		return "Du kan vælge enten at betale 4000 mønter eller 10% af din pengebeholdning,"
 				+ "\nvil du betale 10%?";
@@ -276,7 +283,7 @@ public class Dansk implements Language{
 
 	@Override
 	public String winnerMsg(Player player){
-		return player.getName() + " har vundet spillet med " + player.getBankAccount().getBalance() + "mønter!";
+		return player.getName() + " har vundet spillet med " + player.getBankAccount().getBalance() + " mønter!";
 	}
 
 	@Override

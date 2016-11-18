@@ -232,7 +232,7 @@ public class GUIBoundary {
 		for(int i = 0; i < gameBoard.getFields().length; i++)
 			if(gameBoard.getField(i).isOwnable())
 				if(gameBoard.getField(i).getOwner() != null)
-					if(gameBoard.getField(i).getOwner().equals(player.getName()))
+					if(gameBoard.getField(i).getOwner().getName().equals(player.getName()))
 						GUI.removeOwner(convertFieldNumber(i));
 	}
 }

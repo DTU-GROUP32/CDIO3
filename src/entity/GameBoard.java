@@ -49,7 +49,7 @@ public class GameBoard {
 		for(int i = 0; i < fields.length; i++)
 			if(fields[i].isOwnable())
 				if(fields[i].getOwner() != null)
-					if(getField(i).getOwner().equals(player.getName()))
+					if(getField(i).getOwner().getName().equals(player.getName()))
 						fields[i].setOwner(null);
 	}
 }
