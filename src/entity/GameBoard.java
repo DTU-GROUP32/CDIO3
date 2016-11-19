@@ -44,4 +44,12 @@ public class GameBoard {
 	public Field getField(int atIndex) {
 		return fields[atIndex];
 	}
+
+	public void releasePlayersFields(Player player) {
+		for(int i = 0; i < fields.length; i++)
+			if(fields[i].isOwnable())
+				if(fields[i].getOwner() != null)
+					if(getField(i).getOwner().getName().equals(player.getName()))
+						fields[i].setOwner(null);
+	}
 }
