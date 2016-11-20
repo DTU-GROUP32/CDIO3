@@ -1,189 +1,342 @@
 package language;
 
-import entity.DiceCup;
+import entity.GameBoard;
 import entity.Player;
 
 public class English implements Language{
 
-	public English(){}
+	public English(){
+		
+	}
+	
+	@Override
+	public String notifyLangChange(){
+		return "The language is now english!";
+	}
 
-	/**
-	 * Welcome message for user with commands available.
-	 * @return
-	 */
+	@Override
+	public String fieldNames(int fieldNumber) {
+		String fieldName;
+		switch (fieldNumber) {
+		case 0:  fieldName = "START";
+		break;
+		case 1:  fieldName = "Tribe Encampment";
+		break;
+		case 2:  fieldName = "Second Sail";
+		break;
+		case 3:  fieldName = "Crater";
+		break;
+		case 4:  fieldName = "Huts in the Mountain";
+		break;
+		case 5:  fieldName = "Mountain";
+		break;
+		case 6:  fieldName = "Monastery";
+		break;
+		case 7:  fieldName = "Cold Desert";
+		break;
+		case 8:  fieldName = "Sea Grover";
+		break;
+		case 9:  fieldName = "Black Cave";
+		break;
+		case 10: fieldName = "Goldmine";
+		break;
+		case 11: fieldName = "The Werewall";
+		break;	
+		case 12: fieldName = "The Pit";
+		break;	
+		case 13: fieldName = "Mountain Village";
+		break;	
+		case 14: fieldName = "The Buccaneers";
+		break;	
+		case 15: fieldName = "South Citadel";
+		break;	
+		case 16: fieldName = "Walled City";
+		break;	
+		case 17: fieldName = "Palace Gates";
+		break;	
+		case 18: fieldName = "Caravan";
+		break;	
+		case 19: fieldName = "Tower";
+		break;	
+		case 20: fieldName = "Privateer Armade";
+		break;	
+		case 21: fieldName = "Castle";
+		break;	
+		default: fieldName = "Unknown field!";
+		break;
+		}
+		return fieldName;
+	}
+	
+	@Override
+	public String fieldPrices(int fieldNumber, GameBoard gameBoard) {
+		String fieldPrice;
+		switch (fieldNumber) {
+		case 0:  fieldPrice = "Refuge";
+		break;
+		case 1:  fieldPrice = "Price: 1000";
+		break;
+		case 2:  fieldPrice = "Price: 4000";
+		break;
+		case 3:  fieldPrice = "Price: 1500";
+		break;
+		case 4:  fieldPrice = "Price: 2500";
+		break;
+		case 5:  fieldPrice = "Price: 2000";
+		break;
+		case 6:  fieldPrice = "Monastery";
+		break;
+		case 7:  fieldPrice = "Price: 3000";
+		break;
+		case 8:  fieldPrice = "Price: 4000";
+		break;
+		case 9:  fieldPrice = "Price: 4000";
+		break;
+		case 10: fieldPrice = "Goldmine";
+		break;
+		case 11: fieldPrice = "Price: 4300";
+		break;	
+		case 12: fieldPrice = "Price: 2500";
+		break;	
+		case 13: fieldPrice = "Price: 4700";
+		break;	
+		case 14: fieldPrice = "Price: 4000";
+		break;	
+		case 15: fieldPrice = "Price: 5000";
+		break;	
+		case 16: fieldPrice = "Walled City";
+		break;	
+		case 17: fieldPrice = "Price: 5500";
+		break;	
+		case 18: fieldPrice = "Caravan";
+		break;	
+		case 19: fieldPrice = "Price: 6000";
+		break;	
+		case 20: fieldPrice = "Price: 4000";
+		break;	
+		case 21: fieldPrice = "Price: 8000";
+		break;	
+		default: fieldPrice = "Unknown field!";
+		break;
+		}
+		return fieldPrice;
+	}
+
+	@Override
+	public String fieldDescription(int fieldNumber) {
+		String fieldName;
+		switch (fieldNumber) {
+		case 6:  fieldName = "Recieve 500 coins";
+		break;
+		case 10: fieldName = "Pay 2000 coins";
+		break;
+		case 16: fieldName = "Recieve 5000 coins";
+		break;
+		case 18: fieldName = "Pay 4000 or 10% of you coins";
+		break;
+		default: fieldName = "Unknown field!";
+		break;
+		}
+		return fieldName;
+	}
+
 	@Override
 	public String welcomeMsg(){
 		return "Welcome to the game!";
 	}
 
-	/**
-	 * Asks for playername
-	 * @return
-	 */
+	@Override
+	public String askForNumberOfPlayers() {
+		return "How many players do you want to play the game? You can choose inbetween 2 and 6 players to be in the game";
+	}
+
 	@Override
 	public String askForPlayerName(int playerNumber){
-		return "Type player " + playerNumber + "'s name";
+		return "Enter the name of player " + playerNumber + ". Players can't have the same name!";
 	}
 
-	/**
-	 * Tells user that the game will start shortly.
-	 * @return
-	 */
 	@Override
 	public String readyToBegin(){
-		return "\nThe game is starting. The player who reaches 3000 coins first is the winner.\nYou can type 'help' at any time"
-				+ " to open a help menu. "; // Skal bruger trykke på noget for at starte?
+		return "The game will now start. The game is won by the player who stands back when everyone else is broke";
 	}
 
-	/**
-	 * Premessage at the start of players turn, tells player help option.
-	 * @return
-	 */
 	public String preMsg(Player player){
-		return "\nIt's " + player.getName() + "s turn, press 'enter' to roll the dices!"; // getbank.getbalance
+		return "It's " + player.getName() + "s turn, press the button to roll the dice!";
 	}
 
-	/**
-	 * Displays the result of the dice roll.
-	 * @return
-	 */
 	@Override
-	public String rollResult(DiceCup diceCup){
-		return "You rolled a " + diceCup.getDices()[0].getFaceValue() + " and a " + diceCup.getDices()[1].getFaceValue();
-	}
-
-	/**
-	 * Switch case that displays the field message that was landed on.
-	 * @return
-	 */
-	@Override
-	public String fieldMsg(DiceCup diceCup){
+	public String fieldMsg(int fieldNumber){
 		String fieldString;
-		switch (diceCup.getSum()) {
-		case 2:  fieldString = "You've climbed to the top of the tower and found 250 coins!";
+		switch (fieldNumber) {
+		case 1:  fieldString = "You're invited to a party at the Tribe Encampment!";
 		break;
-		case 3:  fieldString = "You've fallen into the crater, it'll cost you 100 coins to get back up.";
+		case 2:  fieldString = "You sail with the Second Sail!";
 		break;
-		case 4:  fieldString = "You've arrived at the palace gates, the guards greets you with 100 coins when you pass.";
+		case 3:  fieldString = "You find a big crater and examine it!";
 		break;
-		case 5:  fieldString = "You've gotten lost in the cold dessert, you find a guy who sells you warm clothes costs you 20 coins.";
+		case 4:  fieldString = "You further examine the mountain and find some huts in the mountain!";
 		break;
-		case 6:  fieldString = "You've arrived at the walled city. A man needs your help, after you've helped him he gave you 180 coins!";
+		case 5:  fieldString = "You're arrived at a huge mountain!";
 		break;
-		case 7:  fieldString = "You've seen a monastery, you didn't find anything there.";
+		case 6:  fieldString = "You see a monastery in the distance and walk closer!";
 		break;
-		case 8:  fieldString = "You've walked into a black cave and taken captive, it costs you 70 coins to walk free.";
+		case 7:  fieldString = "You're arrived at the cold desert!";
 		break;
-		case 9:  fieldString = "You've found some huts in the mountains, the people that live there likes you and give you 60 coins!";
+		case 8:  fieldString = "You sail with the Sea Grover";
 		break;
-		case 10: fieldString = "You've arrived at the werewall. The werewolf doesn't want to let you go, you give them 80 coins, as thanks they let you walk free and roll the dice again.";
+		case 9:  fieldString = "You find a black cave!";
 		break;
-		case 11: fieldString = "You've fallen into the pit, a friendly man helps you back up. You give him 50 coins as thanks.";
+		case 10: fieldString = "You explore a cave that looks like a goldmine";
 		break;
-		case 12: fieldString = "You've arrived at the goldmine. You find gold in there, you sell it for 650 coins!";
-		break;
-		default: fieldString = "Unknown field.";
+		case 11: fieldString = "You're arrived at the Werewall!";
+		break;	
+		case 12: fieldString = "You fell into a black hole!";
+		break;	
+		case 13: fieldString = "You're arrived at the famous mountain village!";
+		break;	
+		case 14: fieldString = "You sail with the The Buccaneers";
+		break;	
+		case 15: fieldString = "You're arrived at the South Citadel!";
+		break;	
+		case 16: fieldString = "You walk carefully through the Walled City";
+		break;	
+		case 17: fieldString = "You pass the large Palace Gates";
+		break;	
+		case 18: fieldString = "You found an abandoned Caravan!";
+		break;	
+		case 19: fieldString = "You try to clib the Tower!";
+		break;	
+		case 20: fieldString = "You go on a sailing adventure with the Privateer Armade";
+		break;	
+		case 21: fieldString = "You're invited into the big Castle!";
+		break;	
+		default: fieldString = "Unknown field!";
 		break;
 		}
 		return fieldString;
 	}
 
-	/**
-	 * Prints how many points the player have after the throw.
-	 * @return
-	 */
 	@Override
-	public String postMsg(Player player){
-		return "After this round " + player.getName() + " has got " + player.getBank().getBalance() + " coins";
+	public String buyingOfferMsg(int price) {
+		return "This field is not owned by anyone, do you want to buy it for " + price + " coins?";
 	}
 
-	/**
-	 * Prints who won with how many points.
-	 * @return
-	 */
+	@Override
+	public String yes() {
+		return "Yes!";
+	}
+
+	@Override
+	public String no() {
+		return "No!";
+	}
+
+	@Override
+	public String purchaseConfirmation() {
+		return "You have now bought this field!";
+	}
+
+	@Override
+	public String notEnoughMoney() {
+		return "You have not enough coins left..";
+	}
+
+	public String landedOnOwnedField(Player owner) {
+		return "This field is already owned by someone, you'll have to pay rent!";
+	}
+
+	@Override
+	public String youPaidThisMuchToThisPerson(int amountPayed, Player owner) {
+		return "You paid " + amountPayed
+				+ " coins to " + owner.getName() + ".";
+	}
+
+	@Override
+	public String getTaxChoice() {
+		return "You can either choose to pay 4000 coins or 10% of your current balance,"
+				+ "\ndo you want to pay 10%?";
+	}
+
+	@Override
+	public String nonOwnableFieldEffectMsg(int fieldNumber) {
+		String message;
+		switch (fieldNumber) {
+		case 6:  message = "You landed on the Monastery, you'll recieve 500 coins!";
+		break;
+		case 10: message = "You landed on the Goldmine, you'll have to pay 2000 coins!";
+		break;
+		case 16: message = "You landed on the Walled City, you'll recieve 5000 coins";
+		break;
+		default: message = "Unknown field!";
+		break;
+		}
+		return message;
+	}
+
+	@Override
+	public String youAreBroke() {
+		return "Sorry, you are broke, thanks for playing!";
+	}
+
 	@Override
 	public String winnerMsg(Player player){
-		return player.getName() + " has won the game with " + player.getBank().getBalance() + "coins!";
+		return player.getName() + " have won the game with " + player.getBankAccount().getBalance() + " coins!";
 	}
-	/**
-	 * Prints the available commands in the menu.
-	 * @return
-	 */
+	
 	@Override
 	public String menu(){
-		return "Type 1 to change sides on dice.\n" +
-				"Type 2 to change language.\n" +
-				"Type 3 to show the score.\n"+
-				"Type 4 to end the game.\n" +
-				"Type 5 to continue the game.";
+		return "Tast 1 for at skifte antal sider på terningerne.\n" +
+				"Tast 2 for at ændre sprog.\n" +
+				"Tast 3 for at vise scoren.\n"+
+				"Tast 4 for at afslutte spillet.\n" +
+				"Tast 5 for at fortsætte spillet.";
 	}
 
-	/**
-	 * Prints the rules of the game.
-	 * @return
-	 */
 	@Override
 	public String printRules(){
-		return "This is a dice game with 2 players. You roll the dices and land on a field inbetween 2 and 12. \nAll fields have a different effect on your score, either positive or negative. Here's a list of all the fields: \n"
-				+ "2. Tower: +250 coins \n"
-				+ "3. Crater: -100 coins \n"
-				+ "4. Palace gates: +100 coins \n"
-				+ "5. Cold Desert: -20 coins \n"
-				+ "6. Walled city: +180 coins \n"
-				+ "7. Monastery: 0 coins \n"
-				+ "8. Black cave: -70 coins \n"
-				+ "9. Huts in the mountain: +60 coins \n"
-				+ "10. The Werewall (werewolf-wall): -80 coins, The player get an extra throw aswell \n"
-				+ "11. The pit: -50 coins \n"
-				+ "12. Goldmine: +650 coins";
+		return "Dette spil er et terningespil mellem 2 personer. Du slår med terninger og lander på et felt fra 2-12. \nDisse felter har enten en negativ eller positiv effekt på din beholdning. Her er vist listen over felterne: \n"
+				+ "2. Tower: +250 \n"
+				+ "3. Crater: -100 \n"
+				+ "4. Palace gates: +100 \n"
+				+ "5. Cold Desert: -20 \n"
+				+ "6. Walled city: +180 \n"
+				+ "7. Monastery: 0 \n"
+				+ "8. Black cave: -70 \n"
+				+ "9. Huts in the mountain: +60 \n"
+				+ "10. The Werewall (werewolf-wall): -80, men spilleren får en ekstra tur \n"
+				+ "11. The pit: -50 \n"
+				+ "12. Goldmine: +650";
 	}
 
-	/**
-	 * Prints the score. 
-	 * @return
-	 */
 	@Override
 	public String printScore(Player[] players){
 		StringBuilder str = new StringBuilder();
 		str.append("The score is:");
-		for (int i = 0; i < players.length; i++)
-			str.append("\n" + players[i].getName() + " has " + players[i].getBank().getBalance() + " coins.");
+		for (int i = 0; i < players.length; i++) 
+			str.append("\n" + players[i].getName() + " has " + players[i].getBankAccount().getBalance());
 		return str.toString();
 	}
 
-	/** 
-	 * Prints how to change the dices.
-	 * @return
-	 */
 	@Override
 	public String changeDices(){
-		return "Type how many sides the two dices should have, on the format \"x,y\" - the sum has to be 12"; // Summen måtte kun gå op til 12?
+		return "Enter how many eyes you want them to have, in the form \"x,y\" - the sum of them must be 12"; // Summen måtte kun gå op til 12?
 	}
 
-	/**
-	 * Prints that the dices were changed successfully.
-	 * @return
-	 */
 	@Override
 	public String printDiceChangeSucces(){
-		return "The dices have been changed.";
+		return "Dice are now changed!";
 	}
 
-	/**
-	 * Prints a error message if the dices couldn't be changed.
-	 * @return
-	 */
 	@Override
 	public String printDiceChangeNotExecuted(){
-		return "The dices couldn't be changed.";
+		return "Dice could not be changed";
 	}
 
-	/**
-	 * Notifies of language change
-	 * @return String
-	 */
 	@Override
-	public String notifyLangChange(){
-		return "The language is now English!";
+	public String youOwnThisField() {
+		
+		return "You already own this field";
 	}
+
+	
 }

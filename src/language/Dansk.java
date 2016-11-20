@@ -183,7 +183,7 @@ public class Dansk implements Language{
 		break;
 		case 9:  fieldString = "Du er kommet til en sort grotte! ";
 		break;
-		case 10: fieldString = "Du udforsker en krotte der ligner en guldmine";
+		case 10: fieldString = "Du udforsker en grotte der ligner en guldmine";
 		break;
 		case 11: fieldString = "Du er ankommet til en stor mur!";
 		break;	
