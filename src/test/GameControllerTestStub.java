@@ -4,7 +4,7 @@ import entity.GameBoard;
 import entity.Player;
 import entity.fields.Field;
 
-public class gameControllerTestStub {
+public class GameControllerTestStub {
 	
 	/**
 	 * Method that implements the exact same logic as our gameController's playTurn, just without all the GUI interaction.
