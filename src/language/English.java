@@ -1,7 +1,7 @@
-package spil.language;
+package language;
 
-import spil.DiceCup;
-import spil.Player;
+import entity.DiceCup;
+import entity.Player;
 
 public class English implements Language{
 
