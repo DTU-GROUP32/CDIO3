@@ -26,7 +26,7 @@ public class GameController {
 		diceCup = new DiceCup();
 	}
 
-	/**1
+	/**
 	 * Method to start playing the game
 	 */
 	public void runGame() {
