@@ -11,6 +11,9 @@ public class GameBoard {
 
 	private Field[] fields;
 
+	/**
+	 * Default constructor, which initializes gameboard with 22 fields
+	 */
 	public GameBoard() {
 		this.fields = new Field[22];
 		fields[0] = new Refuge(0); // start
@@ -37,14 +40,27 @@ public class GameBoard {
 		fields[21] = new Territory(8000, 4000);
 	}
 
+	/**
+	 * Returns array of fields
+	 * @return Field[]
+	 */
 	public Field[] getFields() {
 		return fields;
 	}
 
+	/**
+	 * Returns specific field in the array at index
+	 * @param atIndex
+	 * @return Field
+	 */
 	public Field getField(int atIndex) {
 		return fields[atIndex];
 	}
 
+	/**
+	 * Removes ownership of every field a player owns
+	 * @param player
+	 */
 	public void releasePlayersFields(Player player) {
 		for(int i = 0; i < fields.length; i++)
 			if(fields[i].isOwnable())
