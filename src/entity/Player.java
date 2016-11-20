@@ -22,7 +22,7 @@ public class Player{
 	 * @param the players name.
 	 */
 	public Player(String name){
-		this(name,30000);
+		this(name, 30000);
 	}
 	
 	/**
@@ -37,18 +37,34 @@ public class Player{
 		this.ID = nextID++;
 	}
 	
+	/**
+	 * Returns the name of the player
+	 * @return name
+	 */
 	public String getName(){
 		return this.playerName;
 	}
 	
+	/**
+	 * Sets the name of the player
+	 * @param name
+	 */
 	public void setName(String name){
 		this.playerName = name;
 	}
 
+	/**
+	 * Returns players bank account
+	 * @return
+	 */
 	public BankAccount getBankAccount(){
 		return this.bankAccount;
 	}
 
+	/**
+	 * Returns integer that tells which field the player is standing on
+	 * @return onField
+	 */
 	public int getOnField(){
 		return this.onField;
 	}
@@ -63,22 +79,42 @@ public class Player{
 			this.onField -= 22;
 	}
 	
+	/**
+	 * Returns player ID
+	 * @return
+	 */
 	public int getID(){
 		return this.ID;
 	}
 
+	/**
+	 * Returns sum of the last roll.
+	 * @return lastRoll
+	 */
 	public int getLastRoll() {
 		return lastRoll;
 	}
 
+	/**
+	 * Sets sum of last roll.
+	 * @param lastRoll
+	 */
 	public void setLastRoll(int lastRoll) {
 		this.lastRoll = lastRoll;
 	}
 
+	/**
+	 * Returns wether or not it is a Tax with a choice
+	 * @return
+	 */
 	public boolean isTaxChoice() {
 		return taxChoice;
 	}
 
+	/**
+	 * Returns tax choice
+	 * @param taxChoice
+	 */
 	public void setTaxChoice(boolean taxChoice) {
 		this.taxChoice = taxChoice;
 	}

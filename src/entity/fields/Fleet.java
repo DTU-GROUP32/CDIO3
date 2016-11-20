@@ -10,6 +10,9 @@ public class Fleet extends Ownable {
 	private final int RENT_4 = 4000;
 	private static int[] numberOfFleetsOwnedByEachPlayer = {0,0,0,0,0,0};
 
+	/**
+	 * Default constructor. Fleet has a price of 4000.
+	 */
 	public Fleet() {
 		super(4000);
 	}
