@@ -147,21 +147,21 @@ public class English implements Language{
 
 	@Override
 	public String askForNumberOfPlayers() {
-		return "How many players do you want to play? You can choose inbetween 2 and 6 players to be in the game";
+		return "How many players do you want to play the game? You can choose inbetween 2 and 6 players to be in the game";
 	}
 
 	@Override
 	public String askForPlayerName(int playerNumber){
-		return "Enter name of player " + playerNumber;
+		return "Enter the name of player " + playerNumber + ". Players can't have the same name!";
 	}
 
 	@Override
 	public String readyToBegin(){
-		return "The game will now start. The game is won by the player who stands when everyone else is broke";
+		return "The game will now start. The game is won by the player who stands back when everyone else is broke";
 	}
 
 	public String preMsg(Player player){
-		return "It's " + player.getName() + "s turn, press the button to roll!";
+		return "It's " + player.getName() + "s turn, press the button to roll the dice!";
 	}
 
 	@Override
