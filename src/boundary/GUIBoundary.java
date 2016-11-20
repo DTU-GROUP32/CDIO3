@@ -22,30 +22,30 @@ public class GUIBoundary {
 		Field[] fields = new Field[gameBoard.getFields().length];
 		fields[0] = new Street.Builder()
 				.setTitle(language.fieldNames(0))
-				.setSubText(language.fieldPrices(0, gameBoard))
+				.setSubText(language.fieldPrices(0))
 				.setBgColor(Color.RED)
 				.build();
 		fields[1] = new Street.Builder()
 				.setTitle(language.fieldNames(1))
-				.setSubText(language.fieldPrices(1, gameBoard))
+				.setSubText(language.fieldPrices(1))
 				.setBgColor(Color.cyan)
 				.build();
 		fields[2] = new Shipping.Builder()
 				.setTitle(language.fieldNames(2))
-				.setSubText(language.fieldPrices(2, gameBoard))
+				.setSubText(language.fieldPrices(2))
 				.build();
 		fields[3] = new Street.Builder()
 				.setTitle(language.fieldNames(3))
-				.setSubText(language.fieldPrices(3, gameBoard))
+				.setSubText(language.fieldPrices(3))
 				.setBgColor(Color.cyan)
 				.build();
 		fields[4] = new Brewery.Builder()
 				.setTitle(language.fieldNames(4))
-				.setSubText(language.fieldPrices(4, gameBoard))
+				.setSubText(language.fieldPrices(4))
 				.build();
 		fields[5] = new Street.Builder()
 				.setTitle(language.fieldNames(5))
-				.setSubText(language.fieldPrices(5, gameBoard))
+				.setSubText(language.fieldPrices(5))
 				.setBgColor(Color.PINK)
 				.build();
 		fields[6] = new Refuge.Builder()
@@ -54,16 +54,16 @@ public class GUIBoundary {
 				.build();
 		fields[7] = new Street.Builder()
 				.setTitle(language.fieldNames(7))
-				.setSubText(language.fieldPrices(7, gameBoard))
+				.setSubText(language.fieldPrices(7))
 				.setBgColor(Color.PINK)
 				.build();
 		fields[8] = new Shipping.Builder()
 				.setTitle(language.fieldNames(8))
-				.setSubText(language.fieldPrices(8, gameBoard))
+				.setSubText(language.fieldPrices(8))
 				.build();
 		fields[9] = new Street.Builder()
 				.setTitle(language.fieldNames(9))
-				.setSubText(language.fieldPrices(9, gameBoard))
+				.setSubText(language.fieldPrices(9))
 				.setBgColor(Color.GREEN)
 				.build();
 		fields[10] = new Tax.Builder()
@@ -72,25 +72,25 @@ public class GUIBoundary {
 				.build();
 		fields[11] = new Street.Builder()
 				.setTitle(language.fieldNames(11))
-				.setSubText(language.fieldPrices(11, gameBoard))
+				.setSubText(language.fieldPrices(11))
 				.setBgColor(Color.GREEN)
 				.build();
 		fields[12] = new Brewery.Builder()
 				.setTitle(language.fieldNames(12))
-				.setSubText(language.fieldPrices(12, gameBoard))
+				.setSubText(language.fieldPrices(12))
 				.build();
 		fields[13] = new Street.Builder()
 				.setTitle(language.fieldNames(13))
-				.setSubText(language.fieldPrices(13, gameBoard))
+				.setSubText(language.fieldPrices(13))
 				.setBgColor(Color.GRAY)
 				.build();
 		fields[14] = new Shipping.Builder()
 				.setTitle(language.fieldNames(14))
-				.setSubText(language.fieldPrices(14, gameBoard))
+				.setSubText(language.fieldPrices(14))
 				.build();
 		fields[15] = new Street.Builder()
 				.setTitle(language.fieldNames(15))
-				.setSubText(language.fieldPrices(15, gameBoard))
+				.setSubText(language.fieldPrices(15))
 				.setBgColor(Color.GRAY)
 				.build();
 		fields[16] = new Refuge.Builder()
@@ -99,7 +99,7 @@ public class GUIBoundary {
 				.build();
 		fields[17] = new Street.Builder()
 				.setTitle(language.fieldNames(17))
-				.setSubText(language.fieldPrices(17, gameBoard))
+				.setSubText(language.fieldPrices(17))
 				.setBgColor(Color.WHITE)
 				.build();
 		fields[18] = new Tax.Builder()
@@ -108,16 +108,16 @@ public class GUIBoundary {
 				.build();
 		fields[19] = new Street.Builder()
 				.setTitle(language.fieldNames(19))
-				.setSubText(language.fieldPrices(19, gameBoard))
+				.setSubText(language.fieldPrices(19))
 				.setBgColor(Color.WHITE)
 				.build();
 		fields[20] = new Shipping.Builder()
 				.setTitle(language.fieldNames(20))
-				.setSubText(language.fieldPrices(20, gameBoard))
+				.setSubText(language.fieldPrices(20))
 				.build();
 		fields[21] = new Street.Builder()
 				.setTitle(language.fieldNames(21))
-				.setSubText(language.fieldPrices(21, gameBoard))
+				.setSubText(language.fieldPrices(21))
 				.setBgColor(Color.YELLOW)
 				.build();
 		GUI.create(fields);

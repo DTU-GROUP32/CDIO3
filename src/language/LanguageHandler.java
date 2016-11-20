@@ -1,6 +1,5 @@
 package language;
 
-import entity.GameBoard;
 import entity.Player;
 
 public class LanguageHandler {
@@ -31,8 +30,8 @@ public class LanguageHandler {
 		return selectedLanguage.fieldNames(fieldNumber);
 	}
 
-	public String fieldPrices(int fieldNumber, GameBoard gameBoard) {
-		return selectedLanguage.fieldPrices(fieldNumber, gameBoard);
+	public String fieldPrices(int fieldNumber) {
+		return selectedLanguage.fieldPrices(fieldNumber);
 	}
 
 	public String fieldDescription(int fieldNumber) {
