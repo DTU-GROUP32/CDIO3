@@ -91,8 +91,10 @@ public class GameController {
 				boundary.updateBalance(ownerOfField.getName(), ownerOfField.getBankAccount().getBalance());
 				int amountPayed = preBalance - player.getBankAccount().getBalance();
 				boundary.getButtonPressed(language.youPaidThisMuchToThisPerson(amountPayed, ownerOfField));
-				}
+				} else
+				{
 				boundary.getButtonPressed(language.youOwnThisField());
+				}
 			}
 		} else
 		{

@@ -33,7 +33,7 @@ public abstract class Ownable extends Field {
 	public abstract int getRent();
 	
 	public void buyField(Player player) {
-		if(player.getBankAccount().getBalance() >= this.price)
+		if(player.getBankAccount().getBalance() > this.price)
 		{
 			player.getBankAccount().withdraw(this.price);
 			this.setOwner(player);
