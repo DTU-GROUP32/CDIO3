@@ -1,6 +1,5 @@
 package language;
 
-import entity.GameBoard;
 import entity.Player;
 
 public class Dansk implements Language{
@@ -65,7 +64,7 @@ public class Dansk implements Language{
 	}
 	
 	@Override
-	public String fieldPrices(int fieldNumber, GameBoard gameBoard) {
+	public String fieldPrices(int fieldNumber) {
 		String fieldPrice;
 		switch (fieldNumber) {
 		case 0:  fieldPrice = "Fristed";
