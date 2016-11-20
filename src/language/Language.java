@@ -1,6 +1,5 @@
 package language;
 
-import entity.GameBoard;
 import entity.Player;
 
 public interface Language {
@@ -9,7 +8,7 @@ public interface Language {
 
 	public String fieldNames(int fieldNumber);
 
-	public String fieldPrices(int fieldNumber, GameBoard gameBoard);
+	public String fieldPrices(int fieldNumber);
 
 	public String fieldDescription(int fieldNumber);
 
