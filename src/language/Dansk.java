@@ -244,8 +244,7 @@ public class Dansk implements Language{
 
 	@Override
 	public String youPaidThisMuchToThisPerson(int amountPayed, Player owner) {
-		return "Du betalte " + amountPayed
-				+ " mønter til " + owner.getName() + ".";
+		return "Du betalte " + amountPayed + " mønter til " + owner.getName() + ".";
 	}
 
 	@Override

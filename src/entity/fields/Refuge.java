@@ -6,11 +6,19 @@ public class Refuge extends Field {
 
 	private int bonus;
 
+	/**
+	 * Constructor. Refuge, which is not ownable, that has a bonus
+	 * @param bonus
+	 */
 	public Refuge(int bonus) {
 		this.bonus = bonus;
 		this.ownable = false;
 	}
 
+	/**
+	 * Returns the bonus
+	 * @return
+	 */
 	public int getBonus() {
 		return bonus;
 	}

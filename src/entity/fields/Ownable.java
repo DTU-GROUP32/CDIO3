@@ -7,6 +7,10 @@ public abstract class Ownable extends Field {
 	protected int price;
 	protected Player owner;
 	
+	/**
+	 * Default constructor
+	 * @param price
+	 */
 	public Ownable(int price){
 		this.ownable = true;
 		this.price = price;
@@ -16,7 +20,7 @@ public abstract class Ownable extends Field {
 	public int getPrice() {
 		return price;
 	}
-	
+
 	public Player getOwner(){
 		return owner;
 	}
@@ -33,7 +37,7 @@ public abstract class Ownable extends Field {
 	public abstract int getRent();
 	
 	public void buyField(Player player) {
-		if(player.getBankAccount().getBalance() >= this.price)
+		if(player.getBankAccount().getBalance() > this.price)
 		{
 			player.getBankAccount().withdraw(this.price);
 			this.setOwner(player);

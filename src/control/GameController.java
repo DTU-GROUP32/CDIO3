@@ -26,7 +26,7 @@ public class GameController {
 		diceCup = new DiceCup();
 	}
 
-	/**1
+	/**
 	 * Method to start playing the game
 	 */
 	public void runGame() {
@@ -91,8 +91,9 @@ public class GameController {
 				boundary.updateBalance(ownerOfField.getName(), ownerOfField.getBankAccount().getBalance());
 				int amountPayed = preBalance - player.getBankAccount().getBalance();
 				boundary.getButtonPressed(language.youPaidThisMuchToThisPerson(amountPayed, ownerOfField));
-				} else{
-					boundary.getButtonPressed(language.youOwnThisField());
+				} else
+				{
+				boundary.getButtonPressed(language.youOwnThisField());
 				}
 			}
 		} else
