@@ -69,7 +69,7 @@ public class English implements Language{
 	}
 	
 	@Override
-	public String fieldPrices(int fieldNumber, GameBoard gameBoard) {
+	public String fieldPrices(int fieldNumber) {
 		String fieldPrice;
 		switch (fieldNumber) {
 		case 0:  fieldPrice = "Refuge";
