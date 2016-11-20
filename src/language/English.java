@@ -1,14 +1,9 @@
 package language;
 
-import entity.GameBoard;
 import entity.Player;
 
 public class English implements Language{
 
-	public English(){
-		
-	}
-	
 	@Override
 	public String notifyLangChange(){
 		return "The language is now english!";
@@ -168,6 +163,8 @@ public class English implements Language{
 	public String fieldMsg(int fieldNumber){
 		String fieldString;
 		switch (fieldNumber) {
+		case 0:  fieldString = "START";
+		break;
 		case 1:  fieldString = "You're invited to a party at the Tribe Encampment!";
 		break;
 		case 2:  fieldString = "You sail with the Second Sail!";
@@ -247,10 +244,14 @@ public class English implements Language{
 
 	@Override
 	public String youPaidThisMuchToThisPerson(int amountPayed, Player owner) {
-		return "You paid " + amountPayed
-				+ " coins to " + owner.getName() + ".";
+		return "You paid " + amountPayed + " coins to " + owner.getName() + ".";
 	}
 
+	@Override
+	public String youOwnThisField() {
+		return "You already own this field";
+	}
+	
 	@Override
 	public String getTaxChoice() {
 		return "You can either choose to pay 4000 coins or 10% of your current balance,"
@@ -330,13 +331,5 @@ public class English implements Language{
 	@Override
 	public String printDiceChangeNotExecuted(){
 		return "Dice could not be changed";
-	}
-
-	@Override
-	public String youOwnThisField() {
-		
-		return "You already own this field";
-	}
-
-	
+	}	
 }
