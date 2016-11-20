@@ -69,6 +69,10 @@ public class Player{
 		return this.onField;
 	}
 	
+	public void setOnField(int onField) {
+		this.onField = onField;
+	}
+	
 	/**
 	 * Adds the number that was rolled to the field the player was on and moves him to a new field.
 	 * @param Integer that was rolled.
