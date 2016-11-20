@@ -51,6 +51,9 @@ public class GameLogikTest {
 
 	}
 
+	/**
+	 * Tests the field type Refuge. The expected result is player bank account receives 500. 
+	 */
 	@Test
 	public void testLandOnFieldRefuge() {
 		int expected = 1000;
@@ -61,7 +64,11 @@ public class GameLogikTest {
 		actual = player.getBankAccount().getBalance();
 		assertEquals(expected, actual);
 	}
-
+/**
+ * Tests the field type Territory. The expected result is player bank account receives loses 100. 
+ */
+	
+	
 	@Test
 	public void testLandOnFieldTerritory() {
 		int expected = 1000;
@@ -72,6 +79,9 @@ public class GameLogikTest {
 		actual = player.getBankAccount().getBalance();
 		assertEquals(expected, actual);
 	}
+/**
+ * Tests the field type LaborCamp. The expected result is player bank account loses 600 because last roll was 6. 
+ */
 	@Test
 	public void testLandOnFieldLaborCamp() {
 		int expected = 1000;
@@ -82,6 +92,9 @@ public class GameLogikTest {
 		actual = player.getBankAccount().getBalance();
 		assertEquals(expected, actual);
 	}
+	/**
+	 * Tests the field type Tax. The expected result is player bank account loses 2000. Therefore we set the points to 3000 in order to not go to negative values. 
+	 */
 	@Test
 	public void testLandOnFieldTax() {
 		int expected = 3000;
@@ -92,6 +105,9 @@ public class GameLogikTest {
 		actual = player.getBankAccount().getBalance();
 		assertEquals(expected, actual);
 	}
+	/**
+	 * Tests the field type Fleet. The expected result is player bank account loses 2000 (owner owns 3 fleets). Therefore we set the points to 3000 in order to not go to negative values. 
+	 */
 	@Test
 	public void testLandOnFieldFleet() {
 		int expected = 3000;
