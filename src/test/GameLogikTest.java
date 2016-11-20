@@ -17,6 +17,7 @@ public class GameLogikTest {
 	private Field tax; 
 	private Field fleet; 
 	
+	
 	@Before
 	public void setUp() throws Exception {
 		player = new Player("Test",5000);
@@ -71,15 +72,16 @@ public class GameLogikTest {
 	}
 	
 	/**
-	 * Tests the field type LaborCamp. The expected result is player bank account loses 600 because last roll was 6. 
+	 * Tests the field type LaborCamp. The expected result is player bank account loses 600 because last roll was 6. Owner owns only 1 laborcamp.  
 	 */
 	@Test
 	public void testLandOnFieldLaborCamp() {
 		int expected = 5000;
 		int actual = player.getBankAccount().getBalance();
 		assertEquals(expected, actual);
-		player.setLastRoll(6);
+		laborcamp.buyField(player2);
 		laborcamp.setOwner(player2);
+		player.setLastRoll(6);
 		laborcamp.landOnField(player);
 		expected = 5000-600;
 		actual = player.getBankAccount().getBalance();
@@ -99,15 +101,17 @@ public class GameLogikTest {
 		assertEquals(expected, actual);
 	}
 	/**
-	 * Tests the field type Fleet. The expected result is player bank account loses 2000 (owner owns 3 fleets). Therefore we set the points to 3000 in order to not go to negative values. 
+	 * Tests the field type Fleet. The expected result is player bank account loses 2000 (owner owns 1 fleets). Therefore we set the points to 3000 in order to not go to negative values. 
 	 */
 	@Test
 	public void testLandOnFieldFleet() {
 		int expected = 5000;
 		int actual = player.getBankAccount().getBalance();
 		assertEquals(expected, actual);
+		fleet.buyField(player2);
+		fleet.setOwner(player2);
 		fleet.landOnField(player);
-		expected = 3000;
+		expected = 5000-500;
 		actual = player.getBankAccount().getBalance();
 		assertEquals(expected, actual);
 	}
