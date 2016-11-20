@@ -1,6 +1,5 @@
 package language;
 
-import entity.GameBoard;
 import entity.Player;
 
 public class Dansk implements Language{
@@ -65,7 +64,7 @@ public class Dansk implements Language{
 	}
 	
 	@Override
-	public String fieldPrices(int fieldNumber, GameBoard gameBoard) {
+	public String fieldPrices(int fieldNumber) {
 		String fieldPrice;
 		switch (fieldNumber) {
 		case 0:  fieldPrice = "Fristed";
@@ -184,7 +183,7 @@ public class Dansk implements Language{
 		break;
 		case 9:  fieldString = "Du er kommet til en sort grotte! ";
 		break;
-		case 10: fieldString = "Du udforsker en krotte der ligner en guldmine";
+		case 10: fieldString = "Du udforsker en grotte der ligner en guldmine";
 		break;
 		case 11: fieldString = "Du er ankommet til en stor mur!";
 		break;	
@@ -245,8 +244,7 @@ public class Dansk implements Language{
 
 	@Override
 	public String youPaidThisMuchToThisPerson(int amountPayed, Player owner) {
-		return "Du betalte " + amountPayed
-				+ " mønter til " + owner.getName() + ".";
+		return "Du betalte " + amountPayed + " mønter til " + owner.getName() + ".";
 	}
 
 	@Override
