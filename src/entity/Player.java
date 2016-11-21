@@ -122,4 +122,8 @@ public class Player{
 	public void setTaxChoice(boolean taxChoice) {
 		this.taxChoice = taxChoice;
 	}
+	
+	public static void resetID() {
+		nextID = 0;
+	}
 }

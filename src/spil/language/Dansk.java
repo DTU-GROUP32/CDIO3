@@ -39,7 +39,7 @@ public class Dansk implements Language{
 	 */
 	@Override
 	public String readyToBegin(){
-		return "\nSpillet vil nu begynde. Spillet er vundet af den spiller der står tilbage når de andre er bankerot!\nDu kan skrive help når det bliver din tur, for en åbne en hjælpemenu "; // Skal bruger trykke på noget for at starte?
+		return "\nSpillet vil nu begynde. Spillet er vundet af den spiller, der står tilbage når de andre er bankerot!\nDu kan skrive help når det bliver din tur, for en åbne en hjælpemenu "; // Skal bruger trykke på noget for at starte?
 	}
 
 	/**
