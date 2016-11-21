@@ -6,7 +6,7 @@ import entity.GameBoard;
 import entity.Player;
 import entity.PlayerList;
 import entity.fields.Field;
-import language.LanguageHandler;
+import entity.language.LanguageHandler;
 
 public class GameController {
 
@@ -114,21 +114,21 @@ public class GameController {
 	}
 
 	/**
-	 * Gamemenu shown before the start of each turn. Lets player end game, continue or switch language
+	 * Gamemenu shown before the start of each turn. Lets player end game, continue or switch entity.language
 	 * @return
 	 */
 	//	public void gameMenu() {
-	//		String choice = this.getInput(language.menu());
+	//		String choice = this.getInput(entity.language.menu());
 	//		switch (choice) {
 	//		// Change dice sides
 	//		case "1":
-	//			String subchoice = this.getInput(language.changeDices());
+	//			String subchoice = this.getInput(entity.language.changeDices());
 	//			if(subchoice.length() > 2) {
 	//				if(diceCup.setDiceSides(Character.getNumericValue(subchoice.charAt(0)), Character.getNumericValue(subchoice.charAt(2))))
-	//					System.out.println(language.printDiceChangeSucces());
+	//					System.out.println(entity.language.printDiceChangeSucces());
 	//				break;
 	//			}
-	//			else System.out.println(language.printDiceChangeNotExecuted());
+	//			else System.out.println(entity.language.printDiceChangeNotExecuted());
 	//			break;
 	//			// Change Language
 	//		case "2":
@@ -136,7 +136,7 @@ public class GameController {
 	//			break;
 	//			// Show Score
 	//		case "3":
-	//			System.out.println(language.printScore(this.players));
+	//			System.out.println(entity.language.printScore(this.players));
 	//			break;
 	//			// End Game
 	//		case "4":
