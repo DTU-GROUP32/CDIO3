@@ -7,8 +7,10 @@ import org.junit.Before;
 import org.junit.Test;
 import entity.*;
 import entity.fields.*;
-public class GameLogikTest {
-
+public class GameLandOnFieldTest {
+/**
+ * We need to players in order to test the fields. We need a player that lands on field and an owner that owns the field that was landed on. 
+ */
 	private Player player; 
 	private Player player2;
 	private Field territory;
@@ -42,7 +44,7 @@ public class GameLogikTest {
 	}
 
 	/**
-	 * Tests the field type Refuge. The expected result is player bank account receives 500. 
+	 * Tests the field type Refuge. The expected result is player bank account receives 500. Expected result will therefore be 5500
 	 */
 	@Test
 	public void testLandOnFieldRefuge() {
@@ -55,7 +57,7 @@ public class GameLogikTest {
 		assertEquals(expected, actual);
 	}
 /**
- * Tests the field type Territory. The expected result is player bank account receives loses 100. 
+ * Tests the field type Territory. The expected result is player bank account receives loses 100.  Therefore the expected result is 4900 
  */
 	
 	
@@ -72,7 +74,7 @@ public class GameLogikTest {
 	}
 	
 	/**
-	 * Tests the field type LaborCamp. The expected result is player bank account loses 600 because last roll was 6. Owner owns only 1 laborcamp.  
+	 * Tests the field type LaborCamp. The expected result is player bank account loses 600 because last roll was 6. Owner owns only 1 laborcamp. The player will have 4400 left.  
 	 */
 	@Test
 	public void testLandOnFieldLaborCamp() {
@@ -88,7 +90,7 @@ public class GameLogikTest {
 		assertEquals(expected, actual);
 	}
 	/**
-	 * Tests the field type Tax. The expected result is player bank account loses 2000. Therefore we set the points to 3000 in order to not go to negative values. 
+	 * Tests the field type Tax. Player lands on tax field that takes 2000. Therefore expected result will be 3000
 	 */
 	@Test
 	public void testLandOnFieldTax() {
