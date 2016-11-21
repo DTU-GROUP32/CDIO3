@@ -4,7 +4,6 @@
 .mtj.tmp/
 
 # Package Files #
-*.jar
 *.war
 *.ear
 
@@ -14,9 +13,11 @@ hs_err_pid*
 # Compiled/Output Files
 bin/
 out/
+
 # Intellij
 .idea
 *.iml
+*.eml
 
 # Eclipse Files
 .classpath
@@ -25,3 +26,4 @@ out/
 # MagicDraw files
 *.mdzip
 *.bak
+
