@@ -4,59 +4,59 @@ import entity.Player;
 
 public interface Language {
 
-	public String notifyLangChange();
+	String notifyLangChange();
 
-	public String fieldNames(int fieldNumber);
+	String fieldNames(int fieldNumber);
 
-	public String fieldPrices(int fieldNumber);
+	String fieldPrices(int fieldNumber);
 
-	public String fieldDescription(int fieldNumber);
+	String fieldDescription(int fieldNumber);
 
-	public String welcomeMsg();
+	String welcomeMsg();
 
-	public String askForNumberOfPlayers();
+	String askForNumberOfPlayers();
 
-	public String askForPlayerName(int playerNumber);
+	String askForPlayerName(int playerNumber);
 
-	public String readyToBegin();
+	String readyToBegin();
 
-	public String preMsg(Player player);
+	String preMsg(Player player);
 
-	public String fieldMsg(int fieldNumber);
+	String fieldMsg(int fieldNumber);
 
-	public String buyingOfferMsg(int price);
+	String buyingOfferMsg(int price);
 
-	public String yes();
+	String yes();
 
-	public String no();
+	String no();
 
-	public String purchaseConfirmation();
+	String purchaseConfirmation();
 
-	public String notEnoughMoney();
+	String notEnoughMoney();
 
-	public String landedOnOwnedField(Player owner);
+	String landedOnOwnedField(Player owner);
 
-	public String youPaidThisMuchToThisPerson(int amountPayed, Player owner);
+	String youPaidThisMuchToThisPerson(int amountPayed, Player owner);
 
-	public String youOwnThisField();
+	String youOwnThisField();
 
-	public String getTaxChoice();
+	String getTaxChoice();
 
-	public String nonOwnableFieldEffectMsg(int onField);
+	String nonOwnableFieldEffectMsg(int onField);
 
-	public String youAreBroke();
+	String youAreBroke();
 
-	public String winnerMsg(Player player);
+	String winnerMsg(Player player);
 
-	public String menu();
+	String menu();
 
-	public String printRules();
+	String printRules();
 
-	public String printScore(Player[] players);
+	String printScore(Player[] players);
 
-	public String changeDices();
+	String changeDices();
 
-	public String printDiceChangeSucces();
+	String printDiceChangeSucces();
 
-	public String printDiceChangeNotExecuted();
+	String printDiceChangeNotExecuted();
 }

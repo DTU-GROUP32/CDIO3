@@ -31,9 +31,9 @@ public class GameController {
 	 */
 	public void runGame() {
 		if(boundary.getButtonPressed(language.readyToBegin()));
-		while(playerList.isThereAWinner() == false) {
+		while(!playerList.isThereAWinner()) {
 			for(int i = 0; i < playerList.getPlayers().length; i++)
-				if(playerList.isThereAWinner() == false && playerList.isPlayerBroke(i) == false)
+				if(!playerList.isThereAWinner() && !playerList.isPlayerBroke(i))
 					playTurn(playerList.getPlayer(i));
 		}
 		boundary.getButtonPressed(language.winnerMsg(playerList.whoIsTheWinner()));
@@ -48,7 +48,7 @@ public class GameController {
 	 * running that sequence until the player has no more extra turns or has won the game. If the players
 	 * turn ends and he hasn't won, the method will print a message with the players current score,
 	 * if the player has won, the method will post a message saying that.
-	 * @param Player player
+	 * @param player Player
 	 */
 	public void playTurn(Player player) {
 		boundary.getButtonPressed(language.preMsg(player));
@@ -82,7 +82,7 @@ public class GameController {
 				}
 			} else
 			{
-				if(field.getOwner().getName().equals(player.getName()) == false)
+				if(!field.getOwner().getName().equals(player.getName()))
 				{
 				boundary.getButtonPressed(language.landedOnOwnedField(ownerOfField));
 				int preBalance = player.getBankAccount().getBalance();

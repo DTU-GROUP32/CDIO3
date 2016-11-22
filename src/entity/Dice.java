@@ -14,7 +14,7 @@ public class Dice {
 	
 	/**
 	 * Secondary constructor, changes the number of sides on of the dice
-	 * @param sides
+	 * @param sides sides on the dice
 	 */
 	public Dice(int sides) {
 		this.sides = sides;
@@ -22,7 +22,7 @@ public class Dice {
 	
 	/**
 	 * Gets the number of sides of the dice
-	 * @return sides
+	 * @return sides sides on the dice
 	 */
 	public int getSides() {
 		return this.sides;
@@ -33,9 +33,8 @@ public class Dice {
 	 * @param sides
 	 * @return sides
 	 */
-	public int setSides(int sides) {
+	public void setSides(int sides) {
 		this.sides = sides;
-		return sides;
 	}
 	
 	/**

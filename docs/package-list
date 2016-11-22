@@ -2,6 +2,6 @@ boundary
 control
 entity
 entity.fields
-language
+entity.language
 main
 test

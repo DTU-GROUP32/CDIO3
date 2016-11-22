@@ -314,7 +314,7 @@ public class English implements Language{
 		StringBuilder str = new StringBuilder();
 		str.append("The score is:");
 		for (int i = 0; i < players.length; i++) 
-			str.append("\n" + players[i].getName() + " has " + players[i].getBankAccount().getBalance());
+			str.append("\n").append(players[i].getName()).append(" has ").append(players[i].getBankAccount().getBalance());
 		return str.toString();
 	}
 
