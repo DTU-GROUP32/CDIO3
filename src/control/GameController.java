@@ -48,7 +48,7 @@ public class GameController {
 	 * running that sequence until the player has no more extra turns or has won the game. If the players
 	 * turn ends and he hasn't won, the method will print a message with the players current score,
 	 * if the player has won, the method will post a message saying that.
-	 * @param Player player
+	 * @param player Player
 	 */
 	public void playTurn(Player player) {
 		boundary.getButtonPressed(language.preMsg(player));
