@@ -25,7 +25,7 @@ public class PlayerList {
 
 	/**
 	 * Returns boolean to determine if players balance is 0 or below
-	 * @param Index of the player
+	 * @param atIndex Index of the player
 	 * @return Boolean
 	 */
 	public boolean isPlayerBroke(int atIndex) {
