@@ -31,7 +31,6 @@ public class Dice {
 	/**
 	 * Sets the number of sides of the dice
 	 * @param sides
-	 * @return sides
 	 */
 	public void setSides(int sides) {
 		this.sides = sides;
