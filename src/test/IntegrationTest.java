@@ -98,22 +98,14 @@ public class IntegrationTest {
 	 */
 	@Test
 	public void OwnableNotOwnedBuyTest() {
-		Player f1ownerExpected = null;
-		Player f3ownerExpected = null;
-		Player f1ownerActual = gameBoard.getField(1).getOwner();
-		Player f3ownerActual = gameBoard.getField(3).getOwner();
-		assertEquals(f1ownerExpected, f1ownerActual);
-		assertEquals(f3ownerExpected, f3ownerActual);
+		assertEquals(null, gameBoard.getField(1).getOwner());
+		assertEquals(null, gameBoard.getField(3).getOwner());
 		setPlayer(p1, 1, false);
 		setPlayer(p2, 3, false);
 		testStub.playTurnTest(gameBoard, p1, true);
 		testStub.playTurnTest(gameBoard, p2, true);
-		f1ownerExpected = p1;
-		f3ownerExpected = p2;
-		f1ownerActual = gameBoard.getField(1).getOwner();
-		f3ownerActual = gameBoard.getField(3).getOwner();
-		assertEquals(f1ownerExpected, f1ownerActual);
-		assertEquals(f3ownerExpected, f3ownerActual);
+		assertEquals(p1, gameBoard.getField(1).getOwner());
+		assertEquals(p2, gameBoard.getField(3).getOwner());
 	}
 	
 	/**
@@ -124,20 +116,14 @@ public class IntegrationTest {
 	 */
 	@Test
 	public void OwnableNotOwnedDontBuyTest() {
-		Player f1ownerExpected = null;
-		Player f3ownerExpected = null;
-		Player f1ownerActual = gameBoard.getField(1).getOwner();
-		Player f3ownerActual = gameBoard.getField(3).getOwner();
-		assertEquals(f1ownerExpected, f1ownerActual);
-		assertEquals(f3ownerExpected, f3ownerActual);
+		assertEquals(null, gameBoard.getField(1).getOwner());
+		assertEquals(null, gameBoard.getField(3).getOwner());
 		setPlayer(p1, 1, false);
 		setPlayer(p2, 3, false);
 		testStub.playTurnTest(gameBoard, p1, false);
 		testStub.playTurnTest(gameBoard, p2, false);
-		f1ownerActual = gameBoard.getField(1).getOwner();
-		f3ownerActual = gameBoard.getField(3).getOwner();
-		assertEquals(f1ownerExpected, f1ownerActual);
-		assertEquals(f3ownerExpected, f3ownerActual);
+		assertEquals(null, gameBoard.getField(1).getOwner());
+		assertEquals(null, gameBoard.getField(3).getOwner());
 	}
 	
 	/**
