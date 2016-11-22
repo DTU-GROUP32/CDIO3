@@ -33,9 +33,8 @@ public class Dice {
 	 * @param sides
 	 * @return sides
 	 */
-	public int setSides(int sides) {
+	public void setSides(int sides) {
 		this.sides = sides;
-		return sides;
 	}
 	
 	/**
