@@ -1,4 +1,4 @@
-package language;
+package entity.language;
 
 import entity.Player;
 

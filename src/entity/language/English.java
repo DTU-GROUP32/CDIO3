@@ -1,4 +1,4 @@
-package language;
+package entity.language;
 
 import entity.Player;
 
@@ -6,7 +6,7 @@ public class English implements Language{
 
 	@Override
 	public String notifyLangChange(){
-		return "The language is now english!";
+		return "The entity.language is now english!";
 	}
 
 	@Override
