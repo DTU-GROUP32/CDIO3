@@ -30,7 +30,7 @@ public class GameController {
 	 * Method to start playing the game
 	 */
 	public void runGame() {
-		if(boundary.getButtonPressed(language.readyToBegin()));
+		boundary.getButtonPressed(language.readyToBegin());
 		while(!playerList.isThereAWinner()) {
 			for(int i = 0; i < playerList.getPlayers().length; i++)
 				if(!playerList.isThereAWinner() && !playerList.isPlayerBroke(i))

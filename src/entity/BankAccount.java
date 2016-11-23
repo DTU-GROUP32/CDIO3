@@ -13,7 +13,7 @@ public class BankAccount {
 
 	/**
 	 * Constructor for the BankAccount class which takes an integer to set balance.
-	 * @param balance int
+	 * @param balance Integer amount to instantiate object with
 	 */
 	public BankAccount(int balance){
 		if (balance < 1)

@@ -30,8 +30,7 @@ public class Dice {
 	
 	/**
 	 * Sets the number of sides of the dice
-	 * @param sides
-	 * @return sides
+	 * @param sides Integer sides amount to instantiate object with
 	 */
 	public void setSides(int sides) {
 		this.sides = sides;
