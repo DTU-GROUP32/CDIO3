@@ -7,7 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 import entity.*;
 import entity.fields.*;
-public class GameLandOnFieldTest {
+public class LandOnFieldTest {
 	/**
 	 * We need to players in order to test the fields. We need a player that lands on field and an owner that owns the field that was landed on. 
 	 */
