@@ -14,7 +14,7 @@ import desktop_resources.GUI;
 import entity.DiceCup;
 import entity.GameBoard;
 import entity.Player;
-import language.LanguageHandler;
+import entity.language.LanguageHandler;
 
 public class GUIBoundary {
 
@@ -125,7 +125,7 @@ public class GUIBoundary {
 	}
 
 	public String getLanguage() {
-		return GUI.getUserSelection("Select language. \nVælg sprog.", "Dansk", "English");
+		return GUI.getUserSelection("Select entity.language. \nVælg sprog.", "Dansk", "English");
 	}
 
 	public void setDices(DiceCup diceCup) {
@@ -211,9 +211,7 @@ public class GUIBoundary {
 
 	public boolean getBoolean(String message, String optionTrue, String optionFalse) {
 		String response = GUI.getUserButtonPressed(message, optionTrue, optionFalse);
-		if (response.equals(optionTrue))
-			return true;
-		else return false;
+		return response.equals(optionTrue);
 	}
 
 	public boolean getButtonPressed(String message) {

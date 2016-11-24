@@ -1,4 +1,4 @@
-package language;
+package entity.language;
 
 import entity.Player;
 
@@ -314,7 +314,7 @@ public class Dansk implements Language{
 		StringBuilder str = new StringBuilder();
 		str.append("Stillingen er:");
 		for (int i = 0; i < players.length; i++) 
-			str.append("\n" + players[i].getName() + " har " + players[i].getBankAccount().getBalance());
+			str.append("\n").append(players[i].getName()).append(" har ").append(players[i].getBankAccount().getBalance());
 		return str.toString();
 	}
 

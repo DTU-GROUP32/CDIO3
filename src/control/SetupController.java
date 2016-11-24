@@ -3,7 +3,7 @@ package control;
 import boundary.GUIBoundary;
 import entity.GameBoard;
 import entity.PlayerList;
-import language.LanguageHandler;
+import entity.language.LanguageHandler;
 
 public class SetupController {
 
@@ -24,7 +24,7 @@ public class SetupController {
 	}
 
 	/**
-	 * Method to change & set language for the gameboard
+	 * Method to change & set entity.language for the gameboard
 	 */
 	public LanguageHandler chooseLanguage() {
 		language = new LanguageHandler(boundary.getLanguage());
