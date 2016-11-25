@@ -28,4 +28,9 @@ public class Fleet extends Ownable {
 		super.buyField(player);
 		numberOfFleetsOwnedByEachPlayer[player.getID()]++;
 	}
+	
+	public static void resetFleetsOwned() {
+		for(int i = 0; i < numberOfFleetsOwnedByEachPlayer.length; i++)
+		numberOfFleetsOwnedByEachPlayer[i] = 0;
+	}
 }
