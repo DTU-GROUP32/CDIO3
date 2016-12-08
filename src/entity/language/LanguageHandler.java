@@ -1,4 +1,4 @@
-package language;
+package entity.language;
 
 import entity.Player;
 
@@ -7,7 +7,7 @@ public class LanguageHandler {
 	private Language selectedLanguage;
 
 	/**
-	 * Default constructor that takes a parameter to initialize a language
+	 * Default constructor that takes a parameter to initialize a entity.language
 	 * @param language
 	 */
 	public LanguageHandler(String language) {
@@ -15,7 +15,7 @@ public class LanguageHandler {
 	}
 
 	/**
-	 * Changes language and sets it to either Danish or English
+	 * Changes entity.language and sets it to either Danish or English
 	 * @param language
 	 */
 	public void setLanguage(String language) {
@@ -27,7 +27,7 @@ public class LanguageHandler {
 	}
 
 	/**
-	 * Notifies of language change
+	 * Notifies of entity.language change
 	 * @return String
 	 */
 	public String notifyLangChange(){

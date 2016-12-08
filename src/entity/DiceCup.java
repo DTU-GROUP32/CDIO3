@@ -13,7 +13,7 @@ public class DiceCup {
 
 	/**
 	 * Secondary constructor, takes diceCount for constructing dice cup with custom amount of dices.
-	 * @param diceCount
+	 * @param diceCount Amount of die in cup
 	 */
 	public DiceCup(int diceCount) {
 		dices = new Dice[diceCount];
@@ -54,9 +54,9 @@ public class DiceCup {
 	/**
 	 * Sets the sides of the first dice to 'a' and the sides of the second dice to 'b',
 	 * if the sum of 'a' and 'b' is 12, and returns true if the sides were changed, otherwise false.
-	 * @param sides on dice at index 0.
-	 * @param sides on dice at index 1.
-	 * @return
+	 * @param a int - sides on dice at index 0.
+	 * @param b int - sides on dice at index 1.
+	 * @return change valid and performed returned as boolean true or false
 	 */
 	public boolean setDiceSides(int a, int b) {
 		if (a+b == 12) {

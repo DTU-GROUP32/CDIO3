@@ -6,7 +6,7 @@ public class PlayerList {
 
 	/**
 	 * Creates an empty array of player objects.
-	 * @param Number of players.
+	 * @param numberOfPlayers - Number of players.
 	 */
 	public PlayerList(int numberOfPlayers) {
 		this.players = new Player[numberOfPlayers];
@@ -16,8 +16,8 @@ public class PlayerList {
 
 	/**
 	 * Instantiates a player object in the array at the index specified.
-	 * @param Index of the player to be instantiated.
-	 * @param Name of the player to be instantiated.
+	 * @param index - Index of the player to be instantiated.
+	 * @param playerName - Name of the player to be instantiated.
 	 */
 	public void addPlayer(int index, String playerName) {
 		this.players[index].setName(playerName);
@@ -25,13 +25,11 @@ public class PlayerList {
 
 	/**
 	 * Returns boolean to determine if players balance is 0 or below
-	 * @param Index of the player
+	 * @param atIndex Index of the player
 	 * @return Boolean
 	 */
 	public boolean isPlayerBroke(int atIndex) {
-		if (players[atIndex].getBankAccount().getBalance() <= 0)
-			return true;
-		else return false;
+		return players[atIndex].getBankAccount().getBalance() <= 0;
 	}
 
 	/**
@@ -43,9 +41,7 @@ public class PlayerList {
 		for (int i = 0; i < players.length; i++)
 			if (players[i].getBankAccount().getBalance() <= 0)
 				brokePlayers++;
-		if (brokePlayers == players.length - 1)
-			return true;
-		else return false;
+		return brokePlayers == players.length - 1;
 	}
 
 	/**

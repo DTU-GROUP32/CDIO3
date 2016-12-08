@@ -13,6 +13,8 @@ hs_err_pid*
 # Compiled/Output Files
 bin/
 out/
+classes/
+src/META-INF/
 
 # Intellij
 .idea

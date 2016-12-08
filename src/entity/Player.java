@@ -19,7 +19,7 @@ public class Player{
 
 	/**
 	 * Constructor that can give the player a name.
-	 * @param the players name.
+	 * @param name the players name.
 	 */
 	public Player(String name){
 		this(name, 30000);
@@ -27,8 +27,8 @@ public class Player{
 	
 	/**
 	 * Constructor that can give the player a name and a starting balance.
-	 * @param the players name.
-	 * @param the players starting balance.
+	 * @param name - the players name.
+	 * @param startingBalance - the players starting balance.
 	 */
 	public Player(String name, int startingBalance) {
 		playerName = name;
@@ -75,7 +75,7 @@ public class Player{
 	
 	/**
 	 * Adds the number that was rolled to the field the player was on and moves him to a new field.
-	 * @param Integer that was rolled.
+	 * @param roll - Integer value that was rolled.
 	 */
 	public void movePlayer(int roll){
 		this.onField += roll;
